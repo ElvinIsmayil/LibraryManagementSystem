@@ -21,6 +21,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\wwwroot\\img\\book-cover-placeholder.png",
+      "PackagePath": "staticwebassets\\img\\book-cover-placeholder.png"
+    },
+    {
       "Id": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\wwwroot\\img\\undraw_posting_photo.svg",
       "PackagePath": "staticwebassets\\img\\undraw_posting_photo.svg"
     },
@@ -43,6 +47,14 @@
     {
       "Id": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\wwwroot\\img\\undraw_rocket.svg",
       "PackagePath": "staticwebassets\\img\\undraw_rocket.svg"
+    },
+    {
+      "Id": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\wwwroot\\img\\user-avatar-female-9.png",
+      "PackagePath": "staticwebassets\\img\\user-avatar-female-9.png"
+    },
+    {
+      "Id": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\wwwroot\\img\\user-avatar-male-5.png",
+      "PackagePath": "staticwebassets\\img\\user-avatar-male-5.png"
     },
     {
       "Id": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\wwwroot\\js\\demo\\chart-area-demo.js",

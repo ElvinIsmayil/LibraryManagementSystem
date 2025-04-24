@@ -12,10 +12,11 @@ namespace Library_Management_System.Models
 
         [Required]
         [Phone]
+        [StringLength(15)]
         public string PhoneNumber { get; set; }
 
         [Required]
-        public int AuthorId { get; set; }
+        public int? AuthorId { get; set; }
         public Author Author {  get; set; }
 
     }

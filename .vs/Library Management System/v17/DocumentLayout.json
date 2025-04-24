@@ -3,48 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|c:\\users\\elvin\\desktop\\c#\\mvc\\library management system\\library management system\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|solutionrelative:library management system\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|c:\\users\\elvin\\desktop\\c#\\mvc\\library management system\\library management system\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|solutionrelative:library management system\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|c:\\users\\elvin\\desktop\\c#\\mvc\\library management system\\library management system\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|solutionrelative:library management system\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|c:\\users\\elvin\\desktop\\c#\\mvc\\library management system\\library management system\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|solutionrelative:library management system\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|c:\\users\\elvin\\desktop\\c#\\mvc\\library management system\\library management system\\dal\\librarymanagementsystemdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|solutionrelative:library management system\\dal\\librarymanagementsystemdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|c:\\users\\elvin\\desktop\\c#\\mvc\\library management system\\library management system\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|solutionrelative:library management system\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|c:\\users\\elvin\\desktop\\c#\\mvc\\library management system\\library management system\\models\\authorcontact.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|solutionrelative:library management system\\models\\authorcontact.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|c:\\users\\elvin\\desktop\\c#\\mvc\\library management system\\library management system\\models\\book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|solutionrelative:library management system\\models\\book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|c:\\users\\elvin\\desktop\\c#\\mvc\\library management system\\library management system\\models\\bookauthor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|solutionrelative:library management system\\models\\bookauthor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|c:\\users\\elvin\\desktop\\c#\\mvc\\library management system\\library management system\\models\\author.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|solutionrelative:library management system\\models\\author.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|c:\\users\\elvin\\desktop\\c#\\mvc\\library management system\\library management system\\models\\common\\baseentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|solutionrelative:library management system\\models\\common\\baseentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\Migrations\\20250424222135_DatabaseRefactored.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Library Management System\\Migrations\\20250424222135_DatabaseRefactored.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|c:\\users\\elvin\\desktop\\c#\\mvc\\library management system\\library management system\\models\\publisher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -53,6 +13,94 @@
     {
       "AbsoluteMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|c:\\users\\elvin\\desktop\\c#\\mvc\\library management system\\library management system\\models\\bookcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|solutionrelative:library management system\\models\\bookcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|c:\\users\\elvin\\desktop\\c#\\mvc\\library management system\\library management system\\models\\bookauthor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|solutionrelative:library management system\\models\\bookauthor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|c:\\users\\elvin\\desktop\\c#\\mvc\\library management system\\library management system\\models\\book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|solutionrelative:library management system\\models\\book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|c:\\users\\elvin\\desktop\\c#\\mvc\\library management system\\library management system\\models\\authorcontact.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|solutionrelative:library management system\\models\\authorcontact.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|c:\\users\\elvin\\desktop\\c#\\mvc\\library management system\\library management system\\models\\author.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|solutionrelative:library management system\\models\\author.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|c:\\users\\elvin\\desktop\\c#\\mvc\\library management system\\library management system\\viewmodels\\publisher\\publishervm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|solutionrelative:library management system\\viewmodels\\publisher\\publishervm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|c:\\users\\elvin\\desktop\\c#\\mvc\\library management system\\library management system\\viewmodels\\publisher\\publishercreatevm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|solutionrelative:library management system\\viewmodels\\publisher\\publishercreatevm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|c:\\users\\elvin\\desktop\\c#\\mvc\\library management system\\library management system\\viewmodels\\bookcategory\\bookcategorycreatevm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|solutionrelative:library management system\\viewmodels\\bookcategory\\bookcategorycreatevm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|c:\\users\\elvin\\desktop\\c#\\mvc\\library management system\\library management system\\viewmodels\\bookcategory\\bookcategoryvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|solutionrelative:library management system\\viewmodels\\bookcategory\\bookcategoryvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|c:\\users\\elvin\\desktop\\c#\\mvc\\library management system\\library management system\\viewmodels\\book\\bookvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|solutionrelative:library management system\\viewmodels\\book\\bookvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|c:\\users\\elvin\\desktop\\c#\\mvc\\library management system\\library management system\\viewmodels\\book\\bookcreatevm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|solutionrelative:library management system\\viewmodels\\book\\bookcreatevm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|c:\\users\\elvin\\desktop\\c#\\mvc\\library management system\\library management system\\viewmodels\\authorcontact\\authorcontactvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|solutionrelative:library management system\\viewmodels\\authorcontact\\authorcontactvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|c:\\users\\elvin\\desktop\\c#\\mvc\\library management system\\library management system\\viewmodels\\authorcontact\\authorcontactcreatevm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|solutionrelative:library management system\\viewmodels\\authorcontact\\authorcontactcreatevm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|c:\\users\\elvin\\desktop\\c#\\mvc\\library management system\\library management system\\viewmodels\\author\\authorvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|solutionrelative:library management system\\viewmodels\\author\\authorvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|c:\\users\\elvin\\desktop\\c#\\mvc\\library management system\\library management system\\viewmodels\\author\\authorcreatevm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|solutionrelative:library management system\\viewmodels\\author\\authorcreatevm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|c:\\users\\elvin\\desktop\\c#\\mvc\\library management system\\library management system\\controllers\\authorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|solutionrelative:library management system\\controllers\\authorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|c:\\users\\elvin\\desktop\\c#\\mvc\\library management system\\library management system\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|solutionrelative:library management system\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|c:\\users\\elvin\\desktop\\c#\\mvc\\library management system\\library management system\\dal\\librarymanagementsystemdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|solutionrelative:library management system\\dal\\librarymanagementsystemdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|c:\\users\\elvin\\desktop\\c#\\mvc\\library management system\\library management system\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|solutionrelative:library management system\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|c:\\users\\elvin\\desktop\\c#\\mvc\\library management system\\library management system\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|solutionrelative:library management system\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|c:\\users\\elvin\\desktop\\c#\\mvc\\library management system\\library management system\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|solutionrelative:library management system\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|c:\\users\\elvin\\desktop\\c#\\mvc\\library management system\\library management system\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|solutionrelative:library management system\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|c:\\users\\elvin\\desktop\\c#\\mvc\\library management system\\library management system\\models\\common\\baseentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|solutionrelative:library management system\\models\\common\\baseentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6D564EB8-C9E1-4259-B9CA-036CB6B7F39C}|Library Management System\\Library Management System.csproj|c:\\users\\elvin\\desktop\\c#\\mvc\\library management system\\library management system\\serviceregistration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -75,45 +123,240 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Privacy.cshtml",
-              "DocumentMoniker": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\Views\\Home\\Privacy.cshtml",
-              "RelativeDocumentMoniker": "Library Management System\\Views\\Home\\Privacy.cshtml",
-              "ToolTip": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\Views\\Home\\Privacy.cshtml",
-              "RelativeToolTip": "Library Management System\\Views\\Home\\Privacy.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-24T19:54:20.022Z",
+              "Title": "20250424222135_DatabaseRefactored.cs",
+              "DocumentMoniker": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\Migrations\\20250424222135_DatabaseRefactored.cs",
+              "RelativeDocumentMoniker": "Library Management System\\Migrations\\20250424222135_DatabaseRefactored.cs",
+              "ToolTip": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\Migrations\\20250424222135_DatabaseRefactored.cs",
+              "RelativeToolTip": "Library Management System\\Migrations\\20250424222135_DatabaseRefactored.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T22:21:35.881Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "PublisherCreateVM.cs",
+              "DocumentMoniker": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\ViewModels\\Publisher\\PublisherCreateVM.cs",
+              "RelativeDocumentMoniker": "Library Management System\\ViewModels\\Publisher\\PublisherCreateVM.cs",
+              "ToolTip": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\ViewModels\\Publisher\\PublisherCreateVM.cs",
+              "RelativeToolTip": "Library Management System\\ViewModels\\Publisher\\PublisherCreateVM.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T20:14:46.012Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "PublisherVM.cs",
+              "DocumentMoniker": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\ViewModels\\Publisher\\PublisherVM.cs",
+              "RelativeDocumentMoniker": "Library Management System\\ViewModels\\Publisher\\PublisherVM.cs",
+              "ToolTip": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\ViewModels\\Publisher\\PublisherVM.cs",
+              "RelativeToolTip": "Library Management System\\ViewModels\\Publisher\\PublisherVM.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T20:14:38.129Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Author.cs",
+              "DocumentMoniker": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\Models\\Author.cs",
+              "RelativeDocumentMoniker": "Library Management System\\Models\\Author.cs",
+              "ToolTip": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\Models\\Author.cs",
+              "RelativeToolTip": "Library Management System\\Models\\Author.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T19:06:40.599Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AuthorContact.cs",
+              "DocumentMoniker": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\Models\\AuthorContact.cs",
+              "RelativeDocumentMoniker": "Library Management System\\Models\\AuthorContact.cs",
+              "ToolTip": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\Models\\AuthorContact.cs",
+              "RelativeToolTip": "Library Management System\\Models\\AuthorContact.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T19:06:51Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Book.cs",
+              "DocumentMoniker": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\Models\\Book.cs",
+              "RelativeDocumentMoniker": "Library Management System\\Models\\Book.cs",
+              "ToolTip": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\Models\\Book.cs",
+              "RelativeToolTip": "Library Management System\\Models\\Book.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T19:06:59.031Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "Library Management System\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "Library Management System\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAKMBAAAjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-24T19:54:20.825Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "Library Management System\\Views\\Home\\Index.cshtml",
-              "ToolTip": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\Views\\Home\\Index.cshtml",
-              "RelativeToolTip": "Library Management System\\Views\\Home\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAABVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-24T19:53:42.193Z",
+              "Title": "BookAuthor.cs",
+              "DocumentMoniker": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\Models\\BookAuthor.cs",
+              "RelativeDocumentMoniker": "Library Management System\\Models\\BookAuthor.cs",
+              "ToolTip": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\Models\\BookAuthor.cs",
+              "RelativeToolTip": "Library Management System\\Models\\BookAuthor.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T19:07:00.995Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "BookCategory.cs",
+              "DocumentMoniker": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\Models\\BookCategory.cs",
+              "RelativeDocumentMoniker": "Library Management System\\Models\\BookCategory.cs",
+              "ToolTip": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\Models\\BookCategory.cs",
+              "RelativeToolTip": "Library Management System\\Models\\BookCategory.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T19:07:04.743Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Publisher.cs",
+              "DocumentMoniker": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\Models\\Publisher.cs",
+              "RelativeDocumentMoniker": "Library Management System\\Models\\Publisher.cs",
+              "ToolTip": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\Models\\Publisher.cs",
+              "RelativeToolTip": "Library Management System\\Models\\Publisher.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAkwA4AAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T19:07:08.526Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "BookCategoryCreateVM.cs",
+              "DocumentMoniker": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\ViewModels\\BookCategory\\BookCategoryCreateVM.cs",
+              "RelativeDocumentMoniker": "Library Management System\\ViewModels\\BookCategory\\BookCategoryCreateVM.cs",
+              "ToolTip": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\ViewModels\\BookCategory\\BookCategoryCreateVM.cs",
+              "RelativeToolTip": "Library Management System\\ViewModels\\BookCategory\\BookCategoryCreateVM.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T20:14:03.591Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "BookCategoryVM.cs",
+              "DocumentMoniker": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\ViewModels\\BookCategory\\BookCategoryVM.cs",
+              "RelativeDocumentMoniker": "Library Management System\\ViewModels\\BookCategory\\BookCategoryVM.cs",
+              "ToolTip": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\ViewModels\\BookCategory\\BookCategoryVM.cs",
+              "RelativeToolTip": "Library Management System\\ViewModels\\BookCategory\\BookCategoryVM.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T20:13:53.474Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "BookVM.cs",
+              "DocumentMoniker": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\ViewModels\\Book\\BookVM.cs",
+              "RelativeDocumentMoniker": "Library Management System\\ViewModels\\Book\\BookVM.cs",
+              "ToolTip": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\ViewModels\\Book\\BookVM.cs",
+              "RelativeToolTip": "Library Management System\\ViewModels\\Book\\BookVM.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T20:13:38.443Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "BookCreateVM.cs",
+              "DocumentMoniker": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\ViewModels\\Book\\BookCreateVM.cs",
+              "RelativeDocumentMoniker": "Library Management System\\ViewModels\\Book\\BookCreateVM.cs",
+              "ToolTip": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\ViewModels\\Book\\BookCreateVM.cs",
+              "RelativeToolTip": "Library Management System\\ViewModels\\Book\\BookCreateVM.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T20:13:45.167Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "AuthorContactVM.cs",
+              "DocumentMoniker": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\ViewModels\\AuthorContact\\AuthorContactVM.cs",
+              "RelativeDocumentMoniker": "Library Management System\\ViewModels\\AuthorContact\\AuthorContactVM.cs",
+              "ToolTip": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\ViewModels\\AuthorContact\\AuthorContactVM.cs",
+              "RelativeToolTip": "Library Management System\\ViewModels\\AuthorContact\\AuthorContactVM.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T20:13:00.004Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "AuthorContactCreateVM.cs",
+              "DocumentMoniker": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\ViewModels\\AuthorContact\\AuthorContactCreateVM.cs",
+              "RelativeDocumentMoniker": "Library Management System\\ViewModels\\AuthorContact\\AuthorContactCreateVM.cs",
+              "ToolTip": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\ViewModels\\AuthorContact\\AuthorContactCreateVM.cs",
+              "RelativeToolTip": "Library Management System\\ViewModels\\AuthorContact\\AuthorContactCreateVM.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T20:13:30.633Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "AuthorVM.cs",
+              "DocumentMoniker": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\ViewModels\\Author\\AuthorVM.cs",
+              "RelativeDocumentMoniker": "Library Management System\\ViewModels\\Author\\AuthorVM.cs",
+              "ToolTip": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\ViewModels\\Author\\AuthorVM.cs",
+              "RelativeToolTip": "Library Management System\\ViewModels\\Author\\AuthorVM.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T20:12:34.148Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "AuthorCreateVM.cs",
+              "DocumentMoniker": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\ViewModels\\Author\\AuthorCreateVM.cs",
+              "RelativeDocumentMoniker": "Library Management System\\ViewModels\\Author\\AuthorCreateVM.cs",
+              "ToolTip": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\ViewModels\\Author\\AuthorCreateVM.cs",
+              "RelativeToolTip": "Library Management System\\ViewModels\\Author\\AuthorCreateVM.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T20:12:41.007Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "AuthorController.cs",
+              "DocumentMoniker": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\Controllers\\AuthorController.cs",
+              "RelativeDocumentMoniker": "Library Management System\\Controllers\\AuthorController.cs",
+              "ToolTip": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\Controllers\\AuthorController.cs",
+              "RelativeToolTip": "Library Management System\\Controllers\\AuthorController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T20:15:15.163Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
               "Title": "HomeController.cs",
               "DocumentMoniker": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "Library Management System\\Controllers\\HomeController.cs",
@@ -126,7 +369,32 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 20,
+              "Title": "Privacy.cshtml",
+              "DocumentMoniker": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\Views\\Home\\Privacy.cshtml",
+              "RelativeDocumentMoniker": "Library Management System\\Views\\Home\\Privacy.cshtml",
+              "ToolTip": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\Views\\Home\\Privacy.cshtml",
+              "RelativeToolTip": "Library Management System\\Views\\Home\\Privacy.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-24T19:54:20.022Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Library Management System\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Library Management System\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAABVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-24T19:53:42.193Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\appsettings.json",
               "RelativeDocumentMoniker": "Library Management System\\appsettings.json",
@@ -134,51 +402,36 @@
               "RelativeToolTip": "Library Management System\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-04-24T19:45:19.528Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-24T19:45:19.528Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "BookAuthor.cs",
-              "DocumentMoniker": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\Models\\BookAuthor.cs",
-              "RelativeDocumentMoniker": "Library Management System\\Models\\BookAuthor.cs",
-              "ToolTip": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\Models\\BookAuthor.cs",
-              "RelativeToolTip": "Library Management System\\Models\\BookAuthor.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-24T19:07:00.995Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Book.cs",
-              "DocumentMoniker": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\Models\\Book.cs",
-              "RelativeDocumentMoniker": "Library Management System\\Models\\Book.cs",
-              "ToolTip": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\Models\\Book.cs",
-              "RelativeToolTip": "Library Management System\\Models\\Book.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAQwBEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-24T19:06:59.031Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 19,
               "Title": "LibraryManagementSystemDbContext.cs",
               "DocumentMoniker": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\DAL\\LibraryManagementSystemDbContext.cs",
               "RelativeDocumentMoniker": "Library Management System\\DAL\\LibraryManagementSystemDbContext.cs",
               "ToolTip": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\DAL\\LibraryManagementSystemDbContext.cs",
               "RelativeToolTip": "Library Management System\\DAL\\LibraryManagementSystemDbContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAABbAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-24T19:02:04.016Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 22,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Library Management System\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Library Management System\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAKMBAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-24T19:54:20.825Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
               "Title": "BaseEntity.cs",
               "DocumentMoniker": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\Models\\Common\\BaseEntity.cs",
               "RelativeDocumentMoniker": "Library Management System\\Models\\Common\\BaseEntity.cs",
@@ -186,64 +439,11 @@
               "RelativeToolTip": "Library Management System\\Models\\Common\\BaseEntity.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-24T19:07:17.593Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-24T19:07:17.593Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Publisher.cs",
-              "DocumentMoniker": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\Models\\Publisher.cs",
-              "RelativeDocumentMoniker": "Library Management System\\Models\\Publisher.cs",
-              "ToolTip": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\Models\\Publisher.cs",
-              "RelativeToolTip": "Library Management System\\Models\\Publisher.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAABIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-24T19:07:08.526Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "AuthorContact.cs",
-              "DocumentMoniker": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\Models\\AuthorContact.cs",
-              "RelativeDocumentMoniker": "Library Management System\\Models\\AuthorContact.cs",
-              "ToolTip": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\Models\\AuthorContact.cs",
-              "RelativeToolTip": "Library Management System\\Models\\AuthorContact.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-24T19:06:51Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Author.cs",
-              "DocumentMoniker": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\Models\\Author.cs",
-              "RelativeDocumentMoniker": "Library Management System\\Models\\Author.cs",
-              "ToolTip": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\Models\\Author.cs",
-              "RelativeToolTip": "Library Management System\\Models\\Author.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-24T19:06:40.599Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "BookCategory.cs",
-              "DocumentMoniker": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\Models\\BookCategory.cs",
-              "RelativeDocumentMoniker": "Library Management System\\Models\\BookCategory.cs",
-              "ToolTip": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\Models\\BookCategory.cs",
-              "RelativeToolTip": "Library Management System\\Models\\BookCategory.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAABIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-24T19:07:04.743Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 26,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\Program.cs",
               "RelativeDocumentMoniker": "Library Management System\\Program.cs",
@@ -251,12 +451,11 @@
               "RelativeToolTip": "Library Management System\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-24T19:05:31.535Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-24T19:05:31.535Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 25,
               "Title": "ServiceRegistration.cs",
               "DocumentMoniker": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\ServiceRegistration.cs",
               "RelativeDocumentMoniker": "Library Management System\\ServiceRegistration.cs",
@@ -264,8 +463,7 @@
               "RelativeToolTip": "Library Management System\\ServiceRegistration.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-24T19:03:32.211Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-24T19:03:32.211Z"
             }
           ]
         }

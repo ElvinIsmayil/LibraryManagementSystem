@@ -12,6 +12,9 @@ namespace Library_Management_System.Models
         [StringLength(200)]
         public string? Adress {  get; set; }
 
+        [Required]
+        public double Rating { get; set; }
+
         public ICollection<Book> Books { get; set; } = new List<Book>();
     }
 }

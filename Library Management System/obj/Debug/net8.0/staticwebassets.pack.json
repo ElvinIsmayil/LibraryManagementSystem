@@ -25,6 +25,14 @@
       "PackagePath": "staticwebassets\\img\\book-cover-placeholder.png"
     },
     {
+      "Id": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\wwwroot\\img\\femaleAuthor.png",
+      "PackagePath": "staticwebassets\\img\\femaleAuthor.png"
+    },
+    {
+      "Id": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\wwwroot\\img\\maleAuthor.png",
+      "PackagePath": "staticwebassets\\img\\maleAuthor.png"
+    },
+    {
       "Id": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\wwwroot\\img\\undraw_posting_photo.svg",
       "PackagePath": "staticwebassets\\img\\undraw_posting_photo.svg"
     },
@@ -47,14 +55,6 @@
     {
       "Id": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\wwwroot\\img\\undraw_rocket.svg",
       "PackagePath": "staticwebassets\\img\\undraw_rocket.svg"
-    },
-    {
-      "Id": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\wwwroot\\img\\user-avatar-female-9.png",
-      "PackagePath": "staticwebassets\\img\\user-avatar-female-9.png"
-    },
-    {
-      "Id": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\wwwroot\\img\\user-avatar-male-5.png",
-      "PackagePath": "staticwebassets\\img\\user-avatar-male-5.png"
     },
     {
       "Id": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\wwwroot\\js\\demo\\chart-area-demo.js",
@@ -311,6 +311,50 @@
     {
       "Id": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\wwwroot\\lib\\sweetalert2\\sweetalert2.all.js",
+      "PackagePath": "staticwebassets\\lib\\sweetalert2\\sweetalert2.all.js"
+    },
+    {
+      "Id": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\wwwroot\\lib\\sweetalert2\\sweetalert2.all.min.js",
+      "PackagePath": "staticwebassets\\lib\\sweetalert2\\sweetalert2.all.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\wwwroot\\lib\\sweetalert2\\sweetalert2.css",
+      "PackagePath": "staticwebassets\\lib\\sweetalert2\\sweetalert2.css"
+    },
+    {
+      "Id": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\wwwroot\\lib\\sweetalert2\\sweetalert2.d.ts",
+      "PackagePath": "staticwebassets\\lib\\sweetalert2\\sweetalert2.d.ts"
+    },
+    {
+      "Id": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\wwwroot\\lib\\sweetalert2\\sweetalert2.esm.all.js",
+      "PackagePath": "staticwebassets\\lib\\sweetalert2\\sweetalert2.esm.all.js"
+    },
+    {
+      "Id": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\wwwroot\\lib\\sweetalert2\\sweetalert2.esm.all.min.js",
+      "PackagePath": "staticwebassets\\lib\\sweetalert2\\sweetalert2.esm.all.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\wwwroot\\lib\\sweetalert2\\sweetalert2.esm.js",
+      "PackagePath": "staticwebassets\\lib\\sweetalert2\\sweetalert2.esm.js"
+    },
+    {
+      "Id": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\wwwroot\\lib\\sweetalert2\\sweetalert2.esm.min.js",
+      "PackagePath": "staticwebassets\\lib\\sweetalert2\\sweetalert2.esm.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\wwwroot\\lib\\sweetalert2\\sweetalert2.js",
+      "PackagePath": "staticwebassets\\lib\\sweetalert2\\sweetalert2.js"
+    },
+    {
+      "Id": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\wwwroot\\lib\\sweetalert2\\sweetalert2.min.css",
+      "PackagePath": "staticwebassets\\lib\\sweetalert2\\sweetalert2.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\wwwroot\\lib\\sweetalert2\\sweetalert2.min.js",
+      "PackagePath": "staticwebassets\\lib\\sweetalert2\\sweetalert2.min.js"
     },
     {
       "Id": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\wwwroot\\scss\\_buttons.scss",

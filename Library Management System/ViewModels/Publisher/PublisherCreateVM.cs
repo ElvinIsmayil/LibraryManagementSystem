@@ -13,5 +13,6 @@ namespace Library_Management_System.ViewModels.Publisher
 
         [Required]
         public double Rating { get; set; }
+        
     }
 }

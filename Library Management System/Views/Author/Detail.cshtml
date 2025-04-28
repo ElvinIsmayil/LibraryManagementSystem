@@ -1,0 +1,59 @@
+﻿@model AuthorDetailVM
+
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<h1 class="mt-4 mb-4 text-center text-primary">Author information</h1>
+
+<div class="card shadow-lg mb-4">
+    <div class="card-body">
+        <div class="row mb-3">
+            <div class="col-sm-3 font-weight-bold">Image:</div>
+            <div class="col-sm-9">
+                @if (!string.IsNullOrEmpty(Model.ImageUrl))
+                {
+                    <img src="@Model.ImageUrl" alt="Author Image" class="img-fluid rounded" style="max-width: 250px;" />
+                }
+                else
+                {
+                    <span>No image available</span>
+                }
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-sm-3 font-weight-bold">Full Name:</div>
+            <div class="col-sm-9">@Model.Name @Model.Surname</div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-sm-3 font-weight-bold">Birth Date:</div>
+            <div class="col-sm-9">@Model.BirthDate?.ToString("dd MMM yyyy")</div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-sm-3 font-weight-bold">Gender:</div>
+            <div class="col-sm-9">@Model.Gender</div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-sm-3 font-weight-bold">Biography:</div>
+            <div class="col-sm-9">@Model.Biography</div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-sm-3 font-weight-bold">Phone Number:</div>
+            <div class="col-sm-9">@Model.AuthorContactDetailVM.PhoneNumber</div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-sm-3 font-weight-bold">Email:</div>
+            <div class="col-sm-9">@Model.AuthorContactDetailVM.Email</div>
+        </div>
+
+      
+    </div>
+</div>
+
+<div class="d-flex justify-content-between mt-3">
+    <a asp-action="Update" asp-route-id="@Model.Id" class="btn btn-primary btn-lg">Edit</a>
+    <a asp-action="Index" class="btn btn-secondary btn-lg">Back to List</a>
+</div>

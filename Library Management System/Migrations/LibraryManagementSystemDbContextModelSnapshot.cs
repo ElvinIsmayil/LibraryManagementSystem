@@ -30,11 +30,19 @@ namespace Library_Management_System.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Biography")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
                     b.Property<DateTime?>("BirthDate")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("Gender")
+                        .HasColumnType("int");
 
                     b.Property<string>("ImageUrl")
                         .IsRequired()
@@ -250,7 +258,7 @@ namespace Library_Management_System.Migrations
             modelBuilder.Entity("Library_Management_System.Models.AuthorContact", b =>
                 {
                     b.HasOne("Library_Management_System.Models.Author", "Author")
-                        .WithOne("AuthorContact")
+                        .WithOne("ContactDetails")
                         .HasForeignKey("Library_Management_System.Models.AuthorContact", "AuthorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -298,10 +306,10 @@ namespace Library_Management_System.Migrations
 
             modelBuilder.Entity("Library_Management_System.Models.Author", b =>
                 {
-                    b.Navigation("AuthorContact")
-                        .IsRequired();
-
                     b.Navigation("BookAuthors");
+
+                    b.Navigation("ContactDetails")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Library_Management_System.Models.Book", b =>

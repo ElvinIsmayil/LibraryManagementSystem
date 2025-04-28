@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Library_Management_System.ViewModels.BookCategory;
+using System.ComponentModel.DataAnnotations;
 
 namespace Library_Management_System.ViewModels.Book
 {
@@ -10,6 +11,8 @@ namespace Library_Management_System.ViewModels.Book
         public DateTime PublishedDate { get; set; }
 
         public string? ImageUrl { get; set; } = "/img/book-cover-placeholder.png";
+
+        public BookCategoryVM BookCategory { get; set; }
 
     }
 }

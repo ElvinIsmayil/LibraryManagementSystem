@@ -1,4 +1,5 @@
-﻿using Library_Management_System.Models.Common;
+﻿using Library_Management_System.Enums;
+using Library_Management_System.Models.Common;
 using System.ComponentModel.DataAnnotations;
 
 namespace Library_Management_System.Models
@@ -14,12 +15,18 @@ namespace Library_Management_System.Models
         public string Surname { get; set; }
 
         [DataType(DataType.Date)]
-        public DateTime? BirthDate { get; set; }
+        public DateTime BirthDate { get; set; }
+
+        public Gender Gender { get; set; }
+
+        [StringLength(500)]
+        public string Biography { get; set; }
 
         [Url]
         public string ImageUrl { get; set; }
 
+       
         public ICollection<BookAuthor> BookAuthors { get; set; } = new List<BookAuthor>();
-        public AuthorContact AuthorContact { get; set; }
+        public AuthorContact ContactDetails { get; set; }
     }
 }

@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Library_Management_System.Enums;
+using Library_Management_System.ViewModels.AuthorContact;
+using System.ComponentModel.DataAnnotations;
 
 namespace Library_Management_System.ViewModels.Author
 {
@@ -12,10 +14,18 @@ namespace Library_Management_System.ViewModels.Author
         [StringLength(100)]
         public string Surname { get; set; }
 
-        [DataType(DataType.Date)]
-        public DateTime? BirthDate { get; set; }
+        [Required]
+        public DateTime BirthDate { get; set; }
 
-        [Url]
-        public string ImageUrl { get; set; }
+        public Gender Gender { get; set; }
+
+        [StringLength(500)]
+        public string Biography { get; set; }
+
+        public IFormFile? Image {  get; set; }
+
+        public AuthorContactCreateVM AuthorContactCreateVM { get; set; }  
+
     }
 }
+  

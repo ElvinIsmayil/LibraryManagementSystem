@@ -9,11 +9,10 @@
 <div class="card shadow-lg mb-4">
     <div class="card-body">
         <div class="row mb-3">
-            <div class="col-sm-3 font-weight-bold">Image:</div>
             <div class="col-sm-9">
                 @if (!string.IsNullOrEmpty(Model.ImageUrl))
                 {
-                    <img src="@Model.ImageUrl" alt="Author Image" class="img-fluid rounded" style="max-width: 250px;" />
+                    <img src="@Model.ImageUrl" alt="Author Image" class="img-fluid rounded" style="max-width: 200px;" />
                 }
                 else
                 {
@@ -22,8 +21,12 @@
             </div>
         </div>
         <div class="row mb-3">
-            <div class="col-sm-3 font-weight-bold">Full Name:</div>
-            <div class="col-sm-9">@Model.Name @Model.Surname</div>
+            <div class="col-sm-3 font-weight-bold">Name:</div>
+            <div class="col-sm-9">@Model.Name</div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-sm-3 font-weight-bold">Surname:</div>
+            <div class="col-sm-9">@Model.Surname</div>
         </div>
 
         <div class="row mb-3">

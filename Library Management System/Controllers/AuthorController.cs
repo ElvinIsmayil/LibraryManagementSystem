@@ -44,17 +44,18 @@ namespace Library_Management_System.Controllers
         {
             if (!ModelState.IsValid)
             {
+                TempData["ErrorMessage"] = "Validation failed. Unable to create the author";
                 return View(authorCreateVM);
             }
             string imageUrl;
 
             if (authorCreateVM.Gender == Enums.Gender.Male)
             {
-             imageUrl = "/img/maleAuthor.png";  
+                imageUrl = "/img/maleAuthor.png";
             }
             else
             {
-            imageUrl = "/img/femaleAuthor.png";  
+                imageUrl = "/img/femaleAuthor.png";
 
             }
 
@@ -102,7 +103,7 @@ namespace Library_Management_System.Controllers
                 Surname = authorCreateVM.Surname,
                 BirthDate = authorCreateVM.BirthDate,
                 Gender = authorCreateVM.Gender,
-                ImageUrl = imageUrl, 
+                ImageUrl = imageUrl,
                 Biography = authorCreateVM.Biography,
                 ContactDetails = authorContact
             };
@@ -144,19 +145,16 @@ namespace Library_Management_System.Controllers
         [HttpGet]
         public async Task<IActionResult> Update(int id)
         {
-            var author = await _context.Authors.FirstOrDefaultAsync(x=> x.Id == id);
+            var author = await _context.Authors
+               .AsNoTracking()
+               .Where(a => a.Id == id)
+               .Include(a => a.ContactDetails)
+               .FirstOrDefaultAsync();
 
             if (author is null)
             {
                 return NotFound();
             }
-
-            AuthorContactUpdateVM authorContactUpdateVM = new AuthorContactUpdateVM
-            {
-                PhoneNumber = author.ContactDetails?.PhoneNumber,
-                Email = author.ContactDetails?.Email,    
-               
-            };
 
             var authorVM = new AuthorUpdateVM()
             {
@@ -166,7 +164,11 @@ namespace Library_Management_System.Controllers
                 Biography = author.Biography,
                 BirthDate = author.BirthDate,
                 ImageUrl = author.ImageUrl,
-                AuthorContactUpdateVM = authorContactUpdateVM,
+                AuthorContactUpdateVM = new AuthorContactUpdateVM()
+                {
+                    Email = author.ContactDetails.Email,
+                    PhoneNumber = author.ContactDetails.PhoneNumber
+                }
             };
 
 
@@ -179,7 +181,6 @@ namespace Library_Management_System.Controllers
         public async Task<IActionResult> Update(int id, AuthorUpdateVM authorUpdateVM)
         {
             var author = await _context.Authors
-                .AsNoTracking()
                 .Where(a => a.Id == id)
                 .Include(a => a.ContactDetails)
                 .FirstOrDefaultAsync();
@@ -187,12 +188,13 @@ namespace Library_Management_System.Controllers
 
             authorUpdateVM.ImageUrl = author.ImageUrl;
 
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
+                TempData["ErrorMessage"] = "Validation failed. Unable to save the author's details.";
                 return View(authorUpdateVM);
             }
 
-            if(authorUpdateVM.Image is null)
+            if (authorUpdateVM.Image is null)
             {
                 author.Name = authorUpdateVM.Name;
                 author.Surname = authorUpdateVM.Surname;
@@ -207,12 +209,20 @@ namespace Library_Management_System.Controllers
                 _context.Update(author);
                 await _context.SaveChangesAsync();
 
+                 TempData["SuccessMessage"] = "Author successfully updated!";
+
                 return RedirectToAction(nameof(Index));
 
             }
             else
             {
-              
+                string oldImagePath = Path.Combine(_env.WebRootPath, "uploads", "authors", author.ImageUrl);
+
+                if (System.IO.File.Exists(oldImagePath))
+                {
+                    System.IO.File.Delete(oldImagePath);
+                }
+
                 string imageUrl;
 
                 if (authorUpdateVM.Gender == Enums.Gender.Male)
@@ -225,37 +235,34 @@ namespace Library_Management_System.Controllers
 
                 }
 
-                if (authorUpdateVM.Image != null)
+                if (!authorUpdateVM.Image.ContentType.StartsWith("image/"))
                 {
-                    if (!authorUpdateVM.Image.ContentType.StartsWith("image/"))
-                    {
-                        ModelState.AddModelError("Image", "You can only upload image files!");
-                        return View(authorUpdateVM);
-                    }
-
-                    if (authorUpdateVM.Image.Length > 50 * 1024)
-                    {
-                        ModelState.AddModelError("Image", "The image file size should not be larger than 50 KB");
-                        return View(authorUpdateVM);
-                    }
-
-                    string fileName = Guid.NewGuid().ToString() + Path.GetExtension(authorUpdateVM.Image.FileName);
-                    string folderPath = Path.Combine(_env.WebRootPath, "uploads", "authors");
-
-                    if (!Directory.Exists(folderPath))
-                    {
-                        Directory.CreateDirectory(folderPath);
-                    }
-
-                    string filePath = Path.Combine(folderPath, fileName);
-
-                    using (var stream = new FileStream(filePath, FileMode.Create))
-                    {
-                        await authorUpdateVM.Image.CopyToAsync(stream);
-                    }
-
-                    imageUrl = "/uploads/authors/" + fileName;
+                    ModelState.AddModelError("Image", "You can only upload image files!");
+                    return View(authorUpdateVM);
                 }
+
+                if (authorUpdateVM.Image.Length > 50 * 1024)
+                {
+                    ModelState.AddModelError("Image", "The image file size should not be larger than 50 KB");
+                    return View(authorUpdateVM);
+                }
+
+                string fileName = Guid.NewGuid().ToString() + Path.GetExtension(authorUpdateVM.Image.FileName);
+                string folderPath = Path.Combine(_env.WebRootPath, "uploads", "authors");
+
+                if (!Directory.Exists(folderPath))
+                {
+                    Directory.CreateDirectory(folderPath);
+                }
+
+                string filePath = Path.Combine(folderPath, fileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await authorUpdateVM.Image.CopyToAsync(stream);
+                }
+
+                imageUrl = "/uploads/authors/" + fileName;
 
                 author.Name = authorUpdateVM.Name;
                 author.Surname = authorUpdateVM.Surname;
@@ -263,8 +270,13 @@ namespace Library_Management_System.Controllers
                 author.BirthDate = authorUpdateVM.BirthDate;
                 author.Biography = authorUpdateVM.Biography;
                 author.ImageUrl = imageUrl;
+                author.ContactDetails = new AuthorContact
+                {
+                    Email = authorUpdateVM.AuthorContactUpdateVM.Email,
+                    PhoneNumber = authorUpdateVM.AuthorContactUpdateVM.PhoneNumber
+                };
 
-                 _context.Update(author);
+                _context.Update(author);
                 await _context.SaveChangesAsync();
 
                 TempData["SuccessMessage"] = "Author successfully updated!";
@@ -272,19 +284,19 @@ namespace Library_Management_System.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            
+
         }
 
         [HttpGet]
         public async Task<IActionResult> Detail(int id)
         {
             var author = await _context.Authors
-                .Where(a=> a.Id==id)
-                .Include(a=> a.ContactDetails)
+                .Where(a => a.Id == id)
+                .Include(a => a.ContactDetails)
                 .FirstOrDefaultAsync();
 
-            if(author is null) return NotFound();
-            
+            if (author is null) return NotFound();
+
 
             var authorVM = new AuthorDetailVM()
             {
@@ -305,7 +317,7 @@ namespace Library_Management_System.Controllers
             return View(authorVM);
         }
 
-        
+
 
     }
 }

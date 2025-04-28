@@ -15,15 +15,18 @@ namespace Library_Management_System.ViewModels.Author
         public string Surname { get; set; }
 
         [Required]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime BirthDate { get; set; }
 
         public Gender Gender { get; set; }
 
         [StringLength(500)]
-        public string Biography { get; set; }
+        public string? Biography { get; set; }
 
         public IFormFile? Image {  get; set; }
 
+        [Required]
         public AuthorContactCreateVM AuthorContactCreateVM { get; set; }  
 
     }

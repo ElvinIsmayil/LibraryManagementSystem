@@ -109,6 +109,8 @@ wwwroot\scss\utilities\_display.scss
 wwwroot\scss\utilities\_progress.scss
 wwwroot\scss\utilities\_rotate.scss
 wwwroot\scss\utilities\_text.scss
+wwwroot\uploads\authors\ba8f4e9d-c376-43d1-b0f6-70196bfe241a.jpeg
+wwwroot\uploads\authors\bfc734f8-73ff-4dea-a6bf-a33f45079008.jpg
 wwwroot\vendor\bootstrap\js\bootstrap.bundle.js
 wwwroot\vendor\bootstrap\js\bootstrap.bundle.js.map
 wwwroot\vendor\bootstrap\js\bootstrap.bundle.min.js

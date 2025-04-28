@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Author</h1>
+<h1 class="mt-4 mb-4 text-center text-primary">Author List</h1>
 
 <table class="table">
 
@@ -40,92 +40,3 @@
 </table>
 
 <!-- TempData Hidden Divs for success and error messages -->
-@if (TempData["SuccessMessage"] != null)
-{
-    <div id="TempData_SuccessMessage" style="display:none;">@TempData["SuccessMessage"]</div>
-}
-
-@if (TempData["ErrorMessage"] != null)
-{
-    <div id="TempData_ErrorMessage" style="display:none;">@TempData["ErrorMessage"]</div>
-}
-
-<script>
-     document.addEventListener("DOMContentLoaded", function () {
-        const successMessage = document.getElementById("TempData_SuccessMessage");
-        const errorMessage = document.getElementById("TempData_ErrorMessage");
-
-        if (successMessage) {
-            Swal.fire({
-                title: "Success!",
-                text: successMessage.textContent,
-                icon: "success",
-                timer: 2000,
-                showConfirmButton: false
-            });
-        }
-
-        if (errorMessage) {
-            Swal.fire({
-                title: "Error",
-                text: errorMessage.textContent,
-                icon: "error",
-                timer: 2000,
-                showConfirmButton: false
-            });
-        }
-    });
-            document.addEventListener("DOMContentLoaded", function () {
-        const deleteButtons = document.querySelectorAll(".deleteBtn");
-
-        deleteButtons.forEach(button => {
-            button.addEventListener("click", function (e) {
-                e.preventDefault();  // Prevent form submission immediately
-
-                const form = this.closest("form");
-                const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
-
-                // Show confirmation alert before deleting
-                Swal.fire({
-                    title: "Are you sure?",
-                    text: "You won't be able to revert this!",
-                    icon: "warning",
-                    showCancelButton: true,
-                    confirmButtonColor: "#3085d6",
-                    cancelButtonColor: "#d33",
-                    confirmButtonText: "Yes, delete it!",
-                    cancelButtonText: "Cancel"
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        // Send the delete request only if the user confirms
-                        fetch(form.action, {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/x-www-form-urlencoded', // Default form submission content type
-                                'RequestVerificationToken': token // Include the anti-forgery token here
-                            },
-                            body: new URLSearchParams(new FormData(form)).toString() // Send form data
-                        })
-                        .then(response => response.text()) // Handle the text response (redirect URL)
-                        .then(data => {
-                            // After successful deletion, show success alert and reload page
-                            Swal.fire({
-                                title: "Deleted!",
-                                text: "Author successfully deleted.",
-                                icon: "success",
-                                timer: 2000,
-                                showConfirmButton: false
-                            }).then(() => {
-                                window.location.href = "/Author/Index"; // Redirect to the Index page
-                            });
-                        })
-                        .catch(() => {
-                            Swal.fire("Error", "Failed to connect to the server.", "error");
-                        });
-                    }
-                });
-            });
-        });
-    });
-
-</script>

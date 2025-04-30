@@ -1,0 +1,47 @@
+﻿@model List<BookCategoryVM>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="mt-4 mb-4 text-center text-primary font-weight-bold">Book Category List</h1>
+
+<div class="mb-4 d-flex justify-content-between">
+    <a class="btn btn-success btn-lg shadow-sm" asp-action="Create" asp-controller="BookCategory" data-bs-toggle="tooltip" data-bs-placement="top" title="Create Author">
+        <i class="fa fa-plus-circle"></i> Add Book Category
+    </a>
+
+    <form asp-action="DeleteAll" asp-controller="Author" method="post" class="d-inline" id="delete-all-form">
+        <button id="delete-all-btn" type="submit" class="btn btn-danger btn-lg" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete All">
+            <i class="fa-regular fa-trash-xmark"></i> Delete All
+        </button>
+    </form>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-striped shadow-sm rounded-3">
+        <thead class="bg-light">
+            <tr class="text-center">
+                <th>Name</th>
+                <th>Operations</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    
+                    <td class="text-center">@item.Name</td>
+                    <td class="text-center">
+                        <form asp-action="Delete" asp-controller="BookCategory" asp-route-id="@item.Id" method="post" class="d-inline delete-form" data-name="@item.Name">
+                            <button type="button" class="btn btn-danger delete-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Author"><i class="fa fa-trash-alt"></i></button>
+                        </form>
+
+                        <a asp-action="Detail" asp-controller="BookCategory" asp-route-id="@item.Id" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="View Author Details"><i class="fa fa-info-circle"></i></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+

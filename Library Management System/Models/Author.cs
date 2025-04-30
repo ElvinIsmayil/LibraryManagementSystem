@@ -24,10 +24,8 @@ namespace Library_Management_System.Models
         [StringLength(500)]
         public string? Biography { get; set; }
 
-        [Url]
+        [DataType(DataType.Url)]
         public string ImageUrl { get; set; }
-
-       
         public ICollection<BookAuthor> BookAuthors { get; set; } = new List<BookAuthor>();
 
         [Required]

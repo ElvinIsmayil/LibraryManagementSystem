@@ -1,0 +1,91 @@
+﻿@model BookUpdateVM
+
+@{
+    ViewData["Title"] = "Update Book Information";
+}
+
+<h1 class="mt-4 mb-4 text-center text-primary font-weight-bold">Update Book Information</h1>
+
+<hr />
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <form asp-action="Update" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-4"></div>
+
+            <div class="d-flex justify-content-center mb-4">
+                @if (Model?.ImageUrl != null)
+                {
+                    <img src="@Model.ImageUrl" alt="Book Image" class="img-fluid rounded-circle shadow-sm" style="max-width: 200px; border: 4px solid #f1f1f1;" />
+                }
+                else
+                {
+                    <span class="text-muted">No image available</span>
+                }
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Title" class="control-label font-weight-bold">Title</label>
+                <input asp-for="Title" class="form-control" placeholder="Enter Book Title" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Description" class="control-label font-weight-bold">Description</label>
+                <textarea asp-for="Description" class="form-control" placeholder="Enter Book Description"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="PageCount" class="control-label font-weight-bold">Page Count</label>
+                <input asp-for="PageCount" class="form-control" type="number" placeholder="Enter Page Count" />
+                <span asp-validation-for="PageCount" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="PublishedDate" class="control-label font-weight-bold">Published Date</label>
+                <input asp-for="PublishedDate" class="form-control" type="date" />
+                <span asp-validation-for="PublishedDate" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="SelectedAuthorIds" class="control-label font-weight-bold">Authors</label>
+                <select asp-for="SelectedAuthorIds" asp-items="ViewBag.Authors" class="form-control" multiple="multiple">
+                    <option value="">Select Authors</option>
+                </select>
+                <span asp-validation-for="SelectedAuthorIds" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="BookCategoryId" class="control-label font-weight-bold">Book Category</label>
+                <select asp-for="BookCategoryId" asp-items="ViewBag.Categories" class="form-control">
+                    <option value="">Select Category</option>
+                </select>
+                <span asp-validation-for="BookCategoryId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="PublisherId" class="control-label font-weight-bold">Publisher</label>
+                <select asp-for="PublisherId" asp-items="ViewBag.Publishers" class="form-control">
+                    <option value="">Select Publisher</option>
+                </select>
+                <span asp-validation-for="PublisherId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Image" class="control-label font-weight-bold">Book Image</label>
+                <input type="file" asp-for="Image" class="form-control" />
+                <span asp-validation-for="Image" class="text-danger"></span>
+            </div>
+
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-primary btn-lg px-5 py-3">
+                    <i class="fa-regular fa-floppy-disk"></i> Save
+                </button>
+            </div>
+        </form>
+
+        <div class="text-center mt-4">
+            <a asp-action="Index" class="btn btn-secondary btn-lg px-4 py-2 rounded-pill shadow-sm"><i class="fa-regular fa-turn-left"></i> Back to List</a>
+        </div>
+    </div>
+</div>

@@ -4,64 +4,84 @@
     ViewData["Title"] = "Update";
 }
 
-<h1 class="mt-4 mb-4 text-center text-primary">Update</h1>
+<h1 class="mt-4 mb-4 text-center text-primary font-weight-bold">Update Author Information</h1>
 
 <hr />
-<div class="row">
-    <div class="col-md-4">
+<div class="row justify-content-center">
+    <div class="col-md-8">
         <form asp-action="Update" enctype="multipart/form-data">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <img height="200" width="200" src="@Model?.ImageUrl" alt="Alternate Text" />
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-4"></div>
+
+            <div class="d-flex justify-content-center mb-4">
+                @if (Model?.ImageUrl != null)
+                {
+                    <img src="@Model.ImageUrl" alt="Author Image" class="img-fluid rounded-circle shadow-sm" style="max-width: 200px; border: 4px solid #f1f1f1;" />
+                }
+                else
+                {
+                    <span class="text-muted">No image available</span>
+                }
+            </div>
+
             <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
+                <label asp-for="Name" class="control-label font-weight-bold"></label>
+                <input asp-for="Name" class="form-control" placeholder="Enter Name" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <label asp-for="Surname" class="control-label"></label>
-                <input asp-for="Surname" class="form-control" />
+                <label asp-for="Surname" class="control-label font-weight-bold"></label>
+                <input asp-for="Surname" class="form-control" placeholder="Enter Surname" />
                 <span asp-validation-for="Surname" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <label asp-for="BirthDate" class="control-label"></label>
-                <input asp-for="BirthDate" class="form-control" />
+                <label asp-for="BirthDate" class="control-label font-weight-bold"></label>
+                <input asp-for="BirthDate" class="form-control" type="date" />
                 <span asp-validation-for="BirthDate" class="text-danger"></span>
             </div>
+
+           <div class="form-group">
+    <label asp-for="Gender" class="control-label font-weight-bold"></label>
+                @Html.DropDownListFor(m => m.Gender, (SelectList)ViewBag.GenderList, "Select Gender", new { @class = "form-control" })
+
+</div>
+
+
             <div class="form-group">
-                <label asp-for="Gender" class="control-label"></label>
-                <select class="form-control" id="Gender" name="Gender">
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label asp-for="Biography" class="control-label"></label>
-                <input asp-for="Biography" class="form-control" />
+                <label asp-for="Biography" class="control-label font-weight-bold"></label>
+                <textarea asp-for="Biography" class="form-control" rows="4" placeholder="Enter biography"></textarea>
                 <span asp-validation-for="Biography" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <label asp-for="AuthorContactUpdateVM.PhoneNumber" class="control-label"></label>
-                <input asp-for="AuthorContactUpdateVM.PhoneNumber" class="form-control" />
+                <label asp-for="AuthorContactUpdateVM.PhoneNumber" class="control-label font-weight-bold"></label>
+                <input asp-for="AuthorContactUpdateVM.PhoneNumber" class="form-control" placeholder="Enter Phone Number" />
                 <span asp-validation-for="AuthorContactUpdateVM.PhoneNumber" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <label asp-for="AuthorContactUpdateVM.Email" class="control-label"></label>
-                <input asp-for="AuthorContactUpdateVM.Email" class="form-control" />
+                <label asp-for="AuthorContactUpdateVM.Email" class="control-label font-weight-bold"></label>
+                <input asp-for="AuthorContactUpdateVM.Email" class="form-control" placeholder="Enter Email" />
                 <span asp-validation-for="AuthorContactUpdateVM.Email" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <label asp-for="Image" class="control-label"></label>
+                <label asp-for="Image" class="control-label font-weight-bold"></label>
                 <input type="file" asp-for="Image" class="form-control" />
                 <span asp-validation-for="Image" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-primary btn-lg px-5 py-3">
+                    <i class="fa-regular fa-floppy-disk"></i> Save
+                </button>
             </div>
+
         </form>
+
+<div class="text-center mt-4">
+    <a asp-action="Index" class="btn btn-secondary btn-lg px-4 py-2 rounded-pill shadow-sm"><i class="fa-regular fa-turn-left"></i> Back to List</a>
+</div>
     </div>
 </div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-

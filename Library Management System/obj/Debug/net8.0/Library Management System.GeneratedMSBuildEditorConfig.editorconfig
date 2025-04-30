@@ -44,8 +44,60 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aG9yXFVwZGF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Elvin/Desktop/C\#/MVC/Library Management System/Library Management System/Views/BookCategory/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va0NhdGVnb3J5XENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Elvin/Desktop/C\#/MVC/Library Management System/Library Management System/Views/BookCategory/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va0NhdGVnb3J5XERldGFpbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Elvin/Desktop/C\#/MVC/Library Management System/Library Management System/Views/BookCategory/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va0NhdGVnb3J5XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Elvin/Desktop/C\#/MVC/Library Management System/Library Management System/Views/BookCategory/Update.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va0NhdGVnb3J5XFVwZGF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Elvin/Desktop/C\#/MVC/Library Management System/Library Management System/Views/Book/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Elvin/Desktop/C\#/MVC/Library Management System/Library Management System/Views/Book/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va1xEZXRhaWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Elvin/Desktop/C\#/MVC/Library Management System/Library Management System/Views/Book/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Elvin/Desktop/C\#/MVC/Library Management System/Library Management System/Views/Book/Update.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va1xVcGRhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Elvin/Desktop/C\#/MVC/Library Management System/Library Management System/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Elvin/Desktop/C\#/MVC/Library Management System/Library Management System/Views/Publisher/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHVibGlzaGVyXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Elvin/Desktop/C\#/MVC/Library Management System/Library Management System/Views/Publisher/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHVibGlzaGVyXERldGFpbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Elvin/Desktop/C\#/MVC/Library Management System/Library Management System/Views/Publisher/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHVibGlzaGVyXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Elvin/Desktop/C\#/MVC/Library Management System/Library Management System/Views/Publisher/Update.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHVibGlzaGVyXFVwZGF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Elvin/Desktop/C\#/MVC/Library Management System/Library Management System/Views/Shared/_Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9FcnJvci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Elvin/Desktop/C\#/MVC/Library Management System/Library Management System/Views/Shared/_Footer.cshtml]
@@ -54,6 +106,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Elvin/Desktop/C\#/MVC/Library Management System/Library Management System/Views/Shared/_Sidebar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9TaWRlYmFyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Elvin/Desktop/C\#/MVC/Library Management System/Library Management System/Views/Shared/_ToastrAlerts.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Ub2FzdHJBbGVydHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Elvin/Desktop/C\#/MVC/Library Management System/Library Management System/Views/Shared/_Topbar.cshtml]

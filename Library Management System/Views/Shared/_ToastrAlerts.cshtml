@@ -1,0 +1,20 @@
+﻿@using Library_Management_System.Helpers
+<script type="text/javascript">
+        toastr.options = {
+        "closeButton": true,
+        "progressBar": true,
+        "positionClass": "toast-top-right",
+        "timeOut": "4000"
+    }
+
+    $(function () {
+    @if (TempData[AlertHelper.Success] != null)
+    {
+        <text>toastr.success("@TempData[AlertHelper.Success]");</text>
+    }
+    @if (TempData[AlertHelper.Error] != null)
+    {
+        <text>toastr.error("@TempData[AlertHelper.Error]");</text>
+    }
+    });
+</script>

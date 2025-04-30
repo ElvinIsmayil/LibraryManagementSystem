@@ -10,17 +10,20 @@ namespace Library_Management_System.Models
         [StringLength(150)]
         public string Title { get; set; }
 
+
         [StringLength(1000)]
         public string Description { get; set; }
 
+        [Required]
         [Range(1, 2000)]
         public int PageCount { get; set; }
 
+        [Required]
         [DataType(DataType.Date)]
         public DateTime PublishedDate { get; set; }
 
-        [Url]
-        public string? ImageUrl { get; set; } = "/img/book-cover-placeholder.png";
+        [DataType(DataType.Url)]
+        public string? ImageUrl { get; set; }
 
         public int BookCategoryId { get; set; }
         public BookCategory BookCategory { get; set; }

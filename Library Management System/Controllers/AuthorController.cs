@@ -1,26 +1,29 @@
 ﻿using Library_Management_System.DAL;
+using Library_Management_System.Extensions;
+using Library_Management_System.Helpers;
 using Library_Management_System.Models;
 using Library_Management_System.ViewModels.Author;
 using Library_Management_System.ViewModels.AuthorContact;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace Library_Management_System.Controllers
 {
     public class AuthorController : Controller
     {
-        private readonly IWebHostEnvironment _env;
         private readonly LibraryManagementSystemDbContext _context;
 
-        public AuthorController(IWebHostEnvironment env, LibraryManagementSystemDbContext context)
+        public AuthorController(LibraryManagementSystemDbContext context)
         {
-            _env = env;
             _context = context;
         }
 
         [HttpGet]
         public async Task<IActionResult> Index()
         {
+            try
+            {
             var author = await _context.Authors.AsNoTracking().ToListAsync();
             var authorVMs = author.Select(a => new AuthorVM()
             {
@@ -31,6 +34,12 @@ namespace Library_Management_System.Controllers
                 ImageUrl = a.ImageUrl
             }).ToList();
             return View(authorVMs);
+
+            }
+            catch (Exception ex)
+            {
+                return View("_Error");
+            }
         }
 
         [HttpGet]
@@ -40,111 +49,100 @@ namespace Library_Management_System.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(AuthorCreateVM authorCreateVM)
         {
-            if (!ModelState.IsValid)
+            try
             {
-                TempData["ErrorMessage"] = "Validation failed. Unable to create the author";
-                return View(authorCreateVM);
-            }
-            string imageUrl;
+                authorCreateVM.Image.FileTypeCheck(ModelState);
+                authorCreateVM.AuthorContactCreateVM.ValidateContactInfo(ModelState);
 
-            if (authorCreateVM.Gender == Enums.Gender.Male)
-            {
-                imageUrl = "/img/maleAuthor.png";
-            }
-            else
-            {
-                imageUrl = "/img/femaleAuthor.png";
-
-            }
-
-            if (authorCreateVM.Image != null)
-            {
-                if (!authorCreateVM.Image.ContentType.StartsWith("image/"))
+                if (!ModelState.IsValid)
                 {
-                    ModelState.AddModelError("Image", "You can only upload image files!");
+                    TempData[AlertHelper.Error] = "Validation failed. Unable to create the author";
                     return View(authorCreateVM);
                 }
 
-                if (authorCreateVM.Image.Length > 50 * 1024)
+                AuthorContact authorContact = new AuthorContact
                 {
-                    ModelState.AddModelError("Image", "The image file size should not be larger than 50 KB");
-                    return View(authorCreateVM);
+                    PhoneNumber = authorCreateVM.AuthorContactCreateVM.PhoneNumber,
+                    Email = authorCreateVM.AuthorContactCreateVM.Email
+                };
+
+                if(authorCreateVM.Image is null)
+                {
+                    authorCreateVM.ImageUrl =  SetDefaultImage(authorCreateVM);
+                }
+                else
+                {
+                    authorCreateVM.ImageUrl = await authorCreateVM.Image.SaveImage("authors");
                 }
 
-                string fileName = Guid.NewGuid().ToString() + Path.GetExtension(authorCreateVM.Image.FileName);
-                string folderPath = Path.Combine(_env.WebRootPath, "uploads", "authors");
-
-                if (!Directory.Exists(folderPath))
+                Author author = new Author
                 {
-                    Directory.CreateDirectory(folderPath);
-                }
+                    Name = authorCreateVM.Name,
+                    Surname = authorCreateVM.Surname,
+                    BirthDate = authorCreateVM.BirthDate,
+                    Gender = authorCreateVM.Gender,
+                    ImageUrl = authorCreateVM.ImageUrl,
+                    Biography = authorCreateVM.Biography,
+                    ContactDetails = authorContact
+                };
 
-                string filePath = Path.Combine(folderPath, fileName);
 
-                using (var stream = new FileStream(filePath, FileMode.Create))
-                {
-                    await authorCreateVM.Image.CopyToAsync(stream);
-                }
+                await _context.Authors.AddAsync(author);
+                await _context.SaveChangesAsync();
 
-                imageUrl = "/uploads/authors/" + fileName;
+
+                TempData[AlertHelper.Success] = "Author successfully created!";
+
+                
+                return RedirectToAction(nameof(Index));
+
             }
-
-            AuthorContact authorContact = new AuthorContact
+            catch (Exception ex)
             {
-                PhoneNumber = authorCreateVM.AuthorContactCreateVM.PhoneNumber,
-                Email = authorCreateVM.AuthorContactCreateVM.Email
-            };
-
-            Author author = new Author
-            {
-                Name = authorCreateVM.Name,
-                Surname = authorCreateVM.Surname,
-                BirthDate = authorCreateVM.BirthDate,
-                Gender = authorCreateVM.Gender,
-                ImageUrl = imageUrl,
-                Biography = authorCreateVM.Biography,
-                ContactDetails = authorContact
-            };
-
-            await _context.Authors.AddAsync(author);
-            await _context.SaveChangesAsync();
-
-            TempData["SuccessMessage"] = "Author successfully created!";
-
-            return RedirectToAction(nameof(Index));
+                return View("_Error");
+            }
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(int id)
         {
-            var author = await _context.Authors.FirstOrDefaultAsync(x => x.Id == id);
-            if (author == null)
+            try
             {
-                TempData["ErrorMessage"] = "Author not found!";
-
+            var author = await _context.Authors.FirstOrDefaultAsync(x => x.Id == id);
+            if (author is null)
+            {
+                TempData[AlertHelper.Error] = "Author not found!";
                 return RedirectToAction(nameof(Index));
             }
 
-            string oldImagePath = Path.Combine(_env.WebRootPath, "uploads", "authors", author.ImageUrl);
-            if (System.IO.File.Exists(oldImagePath))
-            {
+            string oldImagePath = Path.Combine(Directory.GetCurrentDirectory(), author.ImageUrl.TrimStart('/'));
+
+            if (System.IO.File.Exists(oldImagePath) && !oldImagePath.StartsWith("/default"))
                 System.IO.File.Delete(oldImagePath);
-            }
 
             _context.Authors.Remove(author);
             await _context.SaveChangesAsync();
 
-            TempData["SuccessMessage"] = "Author successfully deleted!";
+            TempData[AlertHelper.Success] = "Author successfully deleted!";
             return RedirectToAction(nameof(Index));
+
+            }catch (Exception ex)
+            {
+                return View("_Error");
+            }
         }
 
 
         [HttpGet]
         public async Task<IActionResult> Update(int id)
         {
+            try
+            {
+
             var author = await _context.Authors
                .AsNoTracking()
                .Where(a => a.Id == id)
@@ -152,9 +150,7 @@ namespace Library_Management_System.Controllers
                .FirstOrDefaultAsync();
 
             if (author is null)
-            {
-                return NotFound();
-            }
+                NotFound();
 
             var authorVM = new AuthorUpdateVM()
             {
@@ -171,8 +167,20 @@ namespace Library_Management_System.Controllers
                 }
             };
 
+            var genderList = new List<SelectListItem>
+            {
+                new SelectListItem { Value = "Male", Text = "Male" },
+                new SelectListItem { Value = "Female", Text = "Female" }
+            };
+
+            ViewBag.GenderList = new SelectList(genderList, "Value", "Text", author.Gender);
 
             return View(authorVM);
+            }
+            catch (Exception ex)
+            {
+                return View("_Error");
+            }
         }
 
         [HttpPost]
@@ -180,6 +188,8 @@ namespace Library_Management_System.Controllers
 
         public async Task<IActionResult> Update(int id, AuthorUpdateVM authorUpdateVM)
         {
+            try
+            {
             var author = await _context.Authors
                 .Where(a => a.Id == id)
                 .Include(a => a.ContactDetails)
@@ -190,7 +200,7 @@ namespace Library_Management_System.Controllers
 
             if (!ModelState.IsValid)
             {
-                TempData["ErrorMessage"] = "Validation failed. Unable to save the author's details.";
+                TempData[AlertHelper.Error] = "Validation failed. Unable to save the author's details.";
                 return View(authorUpdateVM);
             }
 
@@ -209,67 +219,24 @@ namespace Library_Management_System.Controllers
                 _context.Update(author);
                 await _context.SaveChangesAsync();
 
-                 TempData["SuccessMessage"] = "Author successfully updated!";
+                TempData[AlertHelper.Success] = "Author successfully updated!";
 
                 return RedirectToAction(nameof(Index));
 
             }
             else
             {
-                string oldImagePath = Path.Combine(_env.WebRootPath, "uploads", "authors", author.ImageUrl);
+                authorUpdateVM.Image.DeleteImageFromLocal();
+                authorUpdateVM.Image.FileTypeCheck(ModelState);
 
-                if (System.IO.File.Exists(oldImagePath))
-                {
-                    System.IO.File.Delete(oldImagePath);
-                }
-
-                string imageUrl;
-
-                if (authorUpdateVM.Gender == Enums.Gender.Male)
-                {
-                    imageUrl = "/img/maleAuthor.png";
-                }
-                else
-                {
-                    imageUrl = "/img/femaleAuthor.png";
-
-                }
-
-                if (!authorUpdateVM.Image.ContentType.StartsWith("image/"))
-                {
-                    ModelState.AddModelError("Image", "You can only upload image files!");
-                    return View(authorUpdateVM);
-                }
-
-                if (authorUpdateVM.Image.Length > 50 * 1024)
-                {
-                    ModelState.AddModelError("Image", "The image file size should not be larger than 50 KB");
-                    return View(authorUpdateVM);
-                }
-
-                string fileName = Guid.NewGuid().ToString() + Path.GetExtension(authorUpdateVM.Image.FileName);
-                string folderPath = Path.Combine(_env.WebRootPath, "uploads", "authors");
-
-                if (!Directory.Exists(folderPath))
-                {
-                    Directory.CreateDirectory(folderPath);
-                }
-
-                string filePath = Path.Combine(folderPath, fileName);
-
-                using (var stream = new FileStream(filePath, FileMode.Create))
-                {
-                    await authorUpdateVM.Image.CopyToAsync(stream);
-                }
-
-                imageUrl = "/uploads/authors/" + fileName;
+                authorUpdateVM.ImageUrl = await authorUpdateVM.Image.SaveImage("authors");
 
                 author.Name = authorUpdateVM.Name;
                 author.Surname = authorUpdateVM.Surname;
                 author.Gender = authorUpdateVM.Gender;
                 author.BirthDate = authorUpdateVM.BirthDate;
                 author.Biography = authorUpdateVM.Biography;
-                author.ImageUrl = imageUrl;
+                author.ImageUrl = authorUpdateVM.ImageUrl;
                 author.ContactDetails = new AuthorContact
                 {
                     Email = authorUpdateVM.AuthorContactUpdateVM.Email,
@@ -279,9 +246,14 @@ namespace Library_Management_System.Controllers
                 _context.Update(author);
                 await _context.SaveChangesAsync();
 
-                TempData["SuccessMessage"] = "Author successfully updated!";
+                TempData[AlertHelper.Success] = "Author successfully updated!";
 
                 return RedirectToAction(nameof(Index));
+
+            }
+            }catch(Exception ex)
+            {
+                return View("_Error");
             }
 
 
@@ -290,6 +262,8 @@ namespace Library_Management_System.Controllers
         [HttpGet]
         public async Task<IActionResult> Detail(int id)
         {
+            try
+            {
             var author = await _context.Authors
                 .Where(a => a.Id == id)
                 .Include(a => a.ContactDetails)
@@ -315,9 +289,62 @@ namespace Library_Management_System.Controllers
             };
 
             return View(authorVM);
+
+            }catch(Exception ex)
+            {
+                return View("_Error");
+            }
         }
 
+        [HttpPost]
+        public async Task<IActionResult> DeleteAll()
+        {
+            try
+            {
+            var authors = await _context.Authors.AsNoTracking().ToListAsync();
 
+            if (!authors.Any())
+            {
+                TempData[AlertHelper.Error] = "No authors found to delete!";
+                return RedirectToAction(nameof(Index));
+            }
+            string folderPath = Path.Combine(Directory.GetCurrentDirectory(), "uploads", "authors");
+            if (System.IO.File.Exists(folderPath))
+            {
+                Directory.Delete(folderPath);
+            }
 
+            _context.Authors.RemoveRange(authors);
+            await _context.SaveChangesAsync();
+
+            TempData[AlertHelper.Success] = "All authors successfully deleted!";
+
+            return RedirectToAction(nameof(Index));
+
+            }
+            catch(Exception ex)
+            {
+                return View("_Error");
+            }
+        }
+
+        private string SetDefaultImage(AuthorCreateVM authorCreateVM)
+        {
+            string imageUrl;
+
+            string maleImage = "/img/default/male-avatar.png";
+            string femaleImage = "/img/default/female-avatar.png";
+
+            if (authorCreateVM.Gender is Enums.Gender.Male)
+            {
+                imageUrl = maleImage;
+            }
+            else
+            {
+                imageUrl = femaleImage;
+            }
+
+            return imageUrl;
+        }
     }
 }

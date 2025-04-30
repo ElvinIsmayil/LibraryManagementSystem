@@ -1,42 +1,54 @@
 ﻿@model List<AuthorVM>
-
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1 class="mt-4 mb-4 text-center text-primary">Author List</h1>
+<h1 class="mt-4 mb-4 text-center text-primary font-weight-bold">Author List</h1>
 
-<table class="table">
+<div class="mb-4 d-flex justify-content-between">
+    <a class="btn btn-success btn-lg shadow-sm" asp-action="Create" asp-controller="Author" data-bs-toggle="tooltip" data-bs-placement="top" title="Create Author">
+        <i class="fa fa-plus-circle"></i> Add Author
+    </a>
 
-    <a class="btn btn-success" asp-action="Create" asp-controller="Author">Create</a>
-    <thead>
-        <tr>
-            <th>Image</th>
-            <th>Name</th>
-            <th>Surname</th>
-            <th>BirthDate</th>
-            <th>Operations</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    <img height="80" width="80" src="@item.ImageUrl" alt="Alternate Text" />
-                </td>
-                <td>@item.Name</td>
-                <td>@item.Surname</td>
-                <td>@item.BirthDate</td>
-                <td>
-                    <form asp-action="Delete" asp-controller="Author" asp-route-id="@item.Id" method="post" style="display:inline;">
-                        <button type="submit" class="btn btn-danger btn-sm deleteBtn">Delete</button>
-                    </form>
-                    <a asp-action="Detail" asp-controller="Author" asp-route-id="@item.Id" class="btn btn-primary btn-sm">Detail</a>
-                </td>
+    <form asp-action="DeleteAll" asp-controller="Author" method="post" class="d-inline" id="delete-all-form">
+        <button id="delete-all-btn" type="submit" class="btn btn-danger btn-lg" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete All">
+            <i class="fa-regular fa-trash-xmark"></i> Delete All
+        </button>
+    </form>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-striped shadow-sm rounded-3">
+        <thead class="bg-light">
+            <tr class="text-center">
+                <th>Image</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Birth Date</th>
+                <th>Operations</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="text-center">
+                        <img height="80" width="80" src="@item.ImageUrl" alt="Author Image" class="img-fluid rounded-circle shadow-sm" />
+                    </td>
+                    <td class="text-center">@item.Name</td>
+                    <td class="text-center">@item.Surname</td>
+                    <td class="text-center">@item.BirthDate</td>
+                    <td class="text-center">
+                        <form asp-action="Delete" asp-controller="Author" asp-route-id="@item.Id" method="post" class="d-inline delete-form" data-name="@item.Name @item.Surname">
+                            <button type="button" class="btn btn-danger delete-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Author"><i class="fa fa-trash-alt"></i></button>
+                        </form>
 
-<!-- TempData Hidden Divs for success and error messages -->
+                        <a asp-action="Detail" asp-controller="Author" asp-route-id="@item.Id" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="View Author Details"><i class="fa fa-info-circle"></i></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    
+</div>
+

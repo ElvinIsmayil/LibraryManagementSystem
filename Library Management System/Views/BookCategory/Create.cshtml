@@ -1,0 +1,32 @@
+﻿@model BookCategoryCreateVM
+
+@{
+    ViewData["Title"] = "Create Book Category";
+}
+
+<h1 class="mt-4 mb-4 text-center text-primary">Create Book Category</h1>
+
+<hr />
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <form asp-action="Create" enctype="multipart/form-data">
+
+            <div asp-validation-summary="All" class="text-danger mb-4"></div>
+
+            <div class="form-group">
+                <label asp-for="Name" class="control-label">Category Name</label>
+                <input asp-for="Name" class="form-control" placeholder="Enter category's name" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group text-center d-flex justify-content-between">
+                <a asp-action="Index" class="btn btn-secondary"><i class="fa-regular fa-turn-left"></i> Back to List</a>
+                <button class="btn btn-success"><i class="fa-regular fa-plus"></i> Create</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<div class="text-center mt-3">
+</div>

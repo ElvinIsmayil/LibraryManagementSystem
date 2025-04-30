@@ -1,0 +1,30 @@
+﻿@model PublisherDetailVM
+
+@{
+    ViewData["Title"] = "Publisher Detail";
+}
+
+<h1 class="mt-4 mb-4 text-center text-primary font-weight-bold">Publisher Information</h1>
+
+<div class="card shadow-lg border-0 mb-4">
+    <div class="card-body p-5">
+        <div class="row mb-4">
+            <div class="col-sm-8">
+                <div class="row mb-3">
+                    <div class="col-sm-3 font-weight-bold text-dark">Publisher Name:</div>
+                    <div class="col-sm-9 text-muted">@Model.Name</div>
+                    <div class="col-sm-3 font-weight-bold text-dark">Publisher Adress:</div>
+                    <div class="col-sm-9 text-muted">@Model.Adress</div>
+                    <div class="col-sm-3 font-weight-bold text-dark">Publisher Rating:</div>
+                    <div class="col-sm-9 text-muted">@Model.Rating</div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="d-flex justify-content-between mt-4">
+    <a asp-action="Update" asp-route-id="@Model.Id" class="btn btn-primary btn-lg px-4 py-2 rounded-pill shadow-sm"><i class="fa-regular fa-pen-to-square"></i> Update</a>
+    <a asp-action="Index" class="btn btn-secondary btn-lg px-4 py-2 rounded-pill shadow-sm"><i class="fa-regular fa-turn-left"></i> Back</a>
+</div>

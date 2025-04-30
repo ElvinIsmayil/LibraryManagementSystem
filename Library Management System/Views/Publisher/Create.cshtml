@@ -1,0 +1,44 @@
+﻿@model PublisherCreateVM
+
+@{
+    ViewData["Title"] = "Create Publisher";
+}
+
+<h1 class="mt-4 mb-4 text-center text-primary">Create Publisher</h1>
+
+<hr />
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <form asp-action="Create" enctype="multipart/form-data">
+
+            <div asp-validation-summary="All" class="text-danger mb-4"></div>
+
+            <div class="form-group">
+                <label asp-for="Name" class="control-label">Publisher Name</label>
+                <input asp-for="Name" class="form-control" placeholder="Enter Publisher's name" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Adress" class="control-label font-weight-bold"></label>
+                <input asp-for="Adress" class="form-control" placeholder="Enter Publisher's Address" />
+                <span asp-validation-for="Adress" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Rating" class="control-label font-weight-bold"></label>
+                <input asp-for="Rating" class="form-control" type="number" step="0.1" min="0" max="5" placeholder="Enter Publisher's Rating (0 to 5)" />
+                <span asp-validation-for="Rating" class="text-danger"></span>
+            </div>
+
+            <div class="form-group text-center d-flex justify-content-between">
+                <a asp-action="Index" class="btn btn-secondary"><i class="fa-regular fa-turn-left"></i> Back to List</a>
+                <button class="btn btn-success"><i class="fa-regular fa-plus"></i> Create</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<div class="text-center mt-3">
+</div>

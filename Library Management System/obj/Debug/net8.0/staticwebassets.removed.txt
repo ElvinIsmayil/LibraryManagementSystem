@@ -1,0 +1,7 @@
+C:\Users\Elvin\Desktop\C#\MVC\Library Management System\Library Management System\wwwroot\uploads\authors\34cf4772-e476-48ac-9161-9aaa436c3ec31736193550703.jpeg
+C:\Users\Elvin\Desktop\C#\MVC\Library Management System\Library Management System\wwwroot\uploads\authors\8098b853-81f9-47f9-a5ee-b285fee2a3e61736193550703.jpeg
+C:\Users\Elvin\Desktop\C#\MVC\Library Management System\Library Management System\wwwroot\uploads\authors\9720e3f5-e966-43f3-85e9-1228c714dd4e1736193550703.jpeg
+C:\Users\Elvin\Desktop\C#\MVC\Library Management System\Library Management System\wwwroot\uploads\authors\cf5ab3f7-c1fe-4b7a-933a-539a4daa1d3c1736193550703.jpeg
+C:\Users\Elvin\Desktop\C#\MVC\Library Management System\Library Management System\wwwroot\uploads\authors\dbbfbf04-0c76-45f2-b14e-9ac9066171b01736193550703.jpeg
+C:\Users\Elvin\Desktop\C#\MVC\Library Management System\Library Management System\wwwroot\uploads\books\0bda71bf-8eed-4cd8-9e18-5f6b1e42b983121003968_811997719575319_8746131006288483295_n.jpg
+C:\Users\Elvin\Desktop\C#\MVC\Library Management System\Library Management System\wwwroot\uploads\books\2b6001a8-1642-489e-bceb-86421607422b1736193550703.jpeg

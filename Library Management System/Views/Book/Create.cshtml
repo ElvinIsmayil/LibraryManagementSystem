@@ -1,0 +1,81 @@
+﻿@model BookCreateVM
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1 class="mt-4 mb-4 text-center text-primary">Create Book</h1>
+
+<hr />
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <form asp-action="Create" enctype="multipart/form-data">
+
+            <div asp-validation-summary="All" class="text-danger mb-4"></div>
+
+            <div class="form-group">
+                <label asp-for="Title" class="control-label">Title</label>
+                <input asp-for="Title" class="form-control" placeholder="Enter book's title" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Description" class="control-label">Description</label>
+                <input asp-for="Description" class="form-control" placeholder="Enter book's description" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="PageCount" class="control-label">Page Count</label>
+                <input asp-for="PageCount" class="form-control" type="number" />
+                <span asp-validation-for="PageCount" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="SelectedAuthorIds" class="control-label font-weight-bold">Authors</label>
+                <select asp-for="SelectedAuthorIds" asp-items="ViewBag.Authors" class="form-control" multiple="multiple">
+                    <option value="">Select Authors</option>  
+                </select>
+                <span asp-validation-for="SelectedAuthorIds" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for="BookCategoryId" class="control-label">Book Category</label>
+                <select asp-for="BookCategoryId" asp-items="ViewBag.Categories" class="form-control">
+                    <option value="">Select Category</option>
+                </select>
+                <span asp-validation-for="BookCategoryId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="PublisherId" class="control-label">Publisher</label>
+                <select asp-for="PublisherId" asp-items="ViewBag.Publishers" class="form-control">
+                    <option value="">Select Publisher</option>
+                </select>
+                <span asp-validation-for="PublisherId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="PublishedDate" class="control-label">Published Date</label>
+                <input asp-for="PublishedDate" class="form-control" type="date" />
+                <span asp-validation-for="PublishedDate" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Image" class="control-label">Book Image</label>
+                <input type="file" asp-for="Image" class="form-control" />
+                <span asp-validation-for="Image" class="text-danger"></span>
+            </div>
+
+            <div class="form-group text-center d-flex justify-content-between">
+                <a asp-action="Index" class="btn btn-secondary"><i class="fa-regular fa-turn-left"></i> Back to List</a>
+                <button type="submit" class="btn btn-success"><i class="fa-regular fa-plus"></i> Create</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<div class="text-center mt-3">
+</div>

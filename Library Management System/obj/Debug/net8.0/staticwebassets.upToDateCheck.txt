@@ -2,9 +2,9 @@ wwwroot\css\sb-admin-2.css
 wwwroot\css\sb-admin-2.min.css
 wwwroot\css\site.css
 wwwroot\favicon.ico
-wwwroot\img\book-cover-placeholder.png
-wwwroot\img\femaleAuthor.png
-wwwroot\img\maleAuthor.png
+wwwroot\img\default\book-cover-placeholder.png
+wwwroot\img\default\female-avatar.png
+wwwroot\img\default\male-avatar.png
 wwwroot\img\undraw_posting_photo.svg
 wwwroot\img\undraw_profile.svg
 wwwroot\img\undraw_profile_1.svg
@@ -63,6 +63,8 @@ wwwroot\lib\bootstrap\dist\js\bootstrap.js.map
 wwwroot\lib\bootstrap\dist\js\bootstrap.min.js
 wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map
 wwwroot\lib\bootstrap\LICENSE
+wwwroot\lib\font-awesome\all.css
+wwwroot\lib\font-awesome\all.js
 wwwroot\lib\jquery\dist\jquery.js
 wwwroot\lib\jquery\dist\jquery.min.js
 wwwroot\lib\jquery\dist\jquery.min.map
@@ -86,6 +88,10 @@ wwwroot\lib\sweetalert2\sweetalert2.esm.min.js
 wwwroot\lib\sweetalert2\sweetalert2.js
 wwwroot\lib\sweetalert2\sweetalert2.min.css
 wwwroot\lib\sweetalert2\sweetalert2.min.js
+wwwroot\lib\toastr.js\toastr.css
+wwwroot\lib\toastr.js\toastr.js.map
+wwwroot\lib\toastr.js\toastr.min.css
+wwwroot\lib\toastr.js\toastr.min.js
 wwwroot\scss\_buttons.scss
 wwwroot\scss\_cards.scss
 wwwroot\scss\_charts.scss
@@ -109,8 +115,6 @@ wwwroot\scss\utilities\_display.scss
 wwwroot\scss\utilities\_progress.scss
 wwwroot\scss\utilities\_rotate.scss
 wwwroot\scss\utilities\_text.scss
-wwwroot\uploads\authors\ba8f4e9d-c376-43d1-b0f6-70196bfe241a.jpeg
-wwwroot\uploads\authors\bfc734f8-73ff-4dea-a6bf-a33f45079008.jpg
 wwwroot\vendor\bootstrap\js\bootstrap.bundle.js
 wwwroot\vendor\bootstrap\js\bootstrap.bundle.js.map
 wwwroot\vendor\bootstrap\js\bootstrap.bundle.min.js

@@ -118,6 +118,11 @@ namespace Library_Management_System.Controllers
                 TempData[AlertHelper.Error] = "Validation failed. Unable to save the author's details.";
                 return View(bookCategoryUpdateVM);
             }
+            if(bookCategory is null)
+            {
+                return NotFound();
+            }
+
             bookCategory.Name = bookCategoryUpdateVM.Name;
 
             _context.Update(bookCategory);
@@ -145,6 +150,7 @@ namespace Library_Management_System.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteAll()
         {
             try

@@ -37,31 +37,7 @@ namespace Library_Management_System.Controllers
         [HttpGet]
         public async Task<IActionResult> Create()
         {
-            var categories = await _context.BookCategories
-                .Select(x => new SelectListItem
-                {
-                    Value = x.Id.ToString(),
-                    Text = x.Name
-                }).ToListAsync();
-
-            var authors = await _context.Authors
-                .Select(x => new SelectListItem
-                {
-                    Value = x.Id.ToString(),
-                    Text = x.Name
-                }).ToListAsync();
-
-            var publishers = await _context.Publishers
-                .Select(x => new SelectListItem
-                {
-                    Value = x.Id.ToString(),
-                    Text = x.Name
-                }).ToListAsync();
-
-            ViewBag.Categories = categories;
-            ViewBag.Authors = authors;
-            ViewBag.Publishers = publishers;
-
+            await LoadDropdownsAsync();
             return View();
         }
 
@@ -71,27 +47,7 @@ namespace Library_Management_System.Controllers
         {
             try
             {
-                var categories = await _context.BookCategories.Select(x => new SelectListItem()
-                {
-                    Value = x.Id.ToString(),
-                    Text = x.Name,
-                }).ToListAsync();
-
-                var authors = await _context.Authors.Select(x => new SelectListItem()
-                {
-                    Value = x.Id.ToString(),
-                    Text = x.Name
-                }).ToListAsync();
-
-                var publishers = await _context.Publishers.Select(x => new SelectListItem()
-                {
-                    Value = x.Id.ToString(),
-                    Text = x.Name
-                }).ToListAsync();
-
-                ViewBag.Publishers = publishers;
-                ViewBag.Authors = authors;
-                ViewBag.Categories = categories;
+                await LoadDropdownsAsync();
 
                 bookCreateVM.Image.FileTypeCheck(ModelState);
 
@@ -162,6 +118,7 @@ namespace Library_Management_System.Controllers
                 TempData[AlertHelper.Error] = "Book not found!";
                 return RedirectToAction(nameof(Index));
             }
+            book.ImageUrl.DeleteImageFromLocal();
 
             _context.Books.Remove(book);
             await _context.SaveChangesAsync();
@@ -173,37 +130,14 @@ namespace Library_Management_System.Controllers
         [HttpGet]
         public async Task<IActionResult> Update(int id)
         {
-            var categories = await _context.BookCategories
-               .Select(x => new SelectListItem
-               {
-                   Value = x.Id.ToString(),
-                   Text = x.Name
-               }).ToListAsync();
-
-            var authors = await _context.Authors
-                .Select(x => new SelectListItem
-                {
-                    Value = x.Id.ToString(),
-                    Text = x.Name
-                }).ToListAsync();
-
-            var publishers = await _context.Publishers
-                .Select(x => new SelectListItem
-                {
-                    Value = x.Id.ToString(),
-                    Text = x.Name
-                }).ToListAsync();
-
-            ViewBag.Categories = categories;
-            ViewBag.Authors = authors;
-            ViewBag.Publishers = publishers;
+           await LoadDropdownsAsync();
 
             var book = await _context.Books
-        .Include(b => b.BookCategory)
-        .Include(b => b.Publisher)
-        .Include(b => b.BookAuthors)
+            .Include(b => b.BookCategory)
+            .Include(b => b.Publisher)
+            .Include(b => b.BookAuthors)
             .ThenInclude(ba => ba.Author)
-        .FirstOrDefaultAsync(b => b.Id == id);
+            .FirstOrDefaultAsync(b => b.Id == id);
 
             if (book == null)
             {
@@ -231,13 +165,15 @@ namespace Library_Management_System.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Update(int id, BookUpdateVM bookUpdateVM)
         {
+            await LoadDropdownsAsync(); 
+
             var book = await _context.Books
                 .Where(x => x.Id == id)
                 .Include(b => b.BookAuthors)  
                 .ThenInclude(ba => ba.Author)
                 .FirstOrDefaultAsync();
 
-            if (book == null)
+            if (book is null)
             { 
                 return NotFound();  
             }
@@ -259,16 +195,16 @@ namespace Library_Management_System.Controllers
                 book.BookCategoryId = bookUpdateVM.BookCategoryId;
 
                 _context.Update(book);
+                UpdateAuthors(book, bookUpdateVM.SelectedAuthorIds);
                 await _context.SaveChangesAsync();
 
-                UpdateAuthors(book, bookUpdateVM.SelectedAuthorIds);
 
                 TempData[AlertHelper.Success] = "Book successfully updated!";
                 return RedirectToAction(nameof(Index));
             }
             else
             {
-                bookUpdateVM.Image.DeleteImageFromLocal();
+                bookUpdateVM.ImageUrl.DeleteImageFromLocal();
                 bookUpdateVM.Image.FileTypeCheck(ModelState); 
 
                 if (!ModelState.IsValid)
@@ -276,8 +212,7 @@ namespace Library_Management_System.Controllers
                     return View(bookUpdateVM);  
                 }
 
-                bookUpdateVM.ImageUrl = await bookUpdateVM.Image.SaveImage("books");
-
+                book.ImageUrl = await bookUpdateVM.Image.SaveImage("books");
                 book.Title = bookUpdateVM.Title;
                 book.Description = bookUpdateVM.Description;
                 book.PageCount = bookUpdateVM.PageCount;
@@ -338,10 +273,9 @@ namespace Library_Management_System.Controllers
                     TempData[AlertHelper.Error] = "No books found to delete!";
                     return RedirectToAction(nameof(Index));
                 }
-                string folderPath = Path.Combine(Directory.GetCurrentDirectory(), "uploads", "books");
-                if (System.IO.File.Exists(folderPath))
+               foreach (var book in books)
                 {
-                    Directory.Delete(folderPath);
+                    book.ImageUrl.DeleteImageFromLocal();   
                 }
 
                 _context.Books.RemoveRange(books);
@@ -373,6 +307,31 @@ namespace Library_Management_System.Controllers
                 _context.BookAuthors.Add(bookAuthor);
             }
         }
+
+        private async Task LoadDropdownsAsync()
+        {
+            ViewBag.Categories = await _context.BookCategories
+                .Select(x => new SelectListItem
+                {
+                    Value = x.Id.ToString(),
+                    Text = x.Name
+                }).ToListAsync();
+
+            ViewBag.Authors = await _context.Authors
+                .Select(x => new SelectListItem
+                {
+                    Value = x.Id.ToString(),
+                    Text = x.Name
+                }).ToListAsync();
+
+            ViewBag.Publishers = await _context.Publishers
+                .Select(x => new SelectListItem
+                {
+                    Value = x.Id.ToString(),
+                    Text = x.Name
+                }).ToListAsync();
+        }
+
 
     }
 }

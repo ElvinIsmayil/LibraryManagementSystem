@@ -2,9 +2,6 @@ wwwroot\css\sb-admin-2.css
 wwwroot\css\sb-admin-2.min.css
 wwwroot\css\site.css
 wwwroot\favicon.ico
-wwwroot\img\default\book-cover-placeholder.png
-wwwroot\img\default\female-avatar.png
-wwwroot\img\default\male-avatar.png
 wwwroot\img\undraw_posting_photo.svg
 wwwroot\img\undraw_profile.svg
 wwwroot\img\undraw_profile_1.svg
@@ -115,6 +112,9 @@ wwwroot\scss\utilities\_display.scss
 wwwroot\scss\utilities\_progress.scss
 wwwroot\scss\utilities\_rotate.scss
 wwwroot\scss\utilities\_text.scss
+wwwroot\uploads\authors\05a85676-2657-4515-afa9-c97af87ad1611736193550703.jpeg
+wwwroot\uploads\authors\52ca4d3c-be6f-49f3-8be5-c98bf21f64df1736193550703.jpeg
+wwwroot\uploads\books\b52213b2-baa6-4c82-9798-780bdf2fe15d1736193550703.jpeg
 wwwroot\vendor\bootstrap\js\bootstrap.bundle.js
 wwwroot\vendor\bootstrap\js\bootstrap.bundle.js.map
 wwwroot\vendor\bootstrap\js\bootstrap.bundle.min.js

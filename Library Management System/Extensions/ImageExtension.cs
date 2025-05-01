@@ -59,15 +59,20 @@ namespace Library_Management_System.Extensions
 
         }
 
-        public static void DeleteImageFromLocal(this IFormFile file)
+        public static void DeleteImageFromLocal(this string? imageUrl)
         {
-            string oldImagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads", "authors", file.FileName);
+            if (string.IsNullOrWhiteSpace(imageUrl))
+                return;
 
-            if (System.IO.File.Exists(oldImagePath))
+            if (imageUrl.StartsWith("/default", StringComparison.OrdinalIgnoreCase))
+                return;
+
+            string fullPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", imageUrl.TrimStart('/'));
+
+            if (System.IO.File.Exists(fullPath))
             {
-                System.IO.File.Delete(oldImagePath);
+                System.IO.File.Delete(fullPath);
             }
-            
         }
 
 

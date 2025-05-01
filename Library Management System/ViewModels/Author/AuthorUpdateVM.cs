@@ -1,5 +1,6 @@
 ﻿using Library_Management_System.Enums;
 using Library_Management_System.ViewModels.AuthorContact;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations;
 
 namespace Library_Management_System.ViewModels.Author
@@ -33,5 +34,10 @@ namespace Library_Management_System.ViewModels.Author
 
         [Required]
         public AuthorContactUpdateVM AuthorContactUpdateVM { get; set; }
+
+        public List<SelectListItem>? GenderList { get; set; }
+
+
+
     }
 }

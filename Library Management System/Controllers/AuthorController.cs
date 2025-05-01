@@ -1,4 +1,5 @@
 ﻿using Library_Management_System.DAL;
+using Library_Management_System.Enums;
 using Library_Management_System.Extensions;
 using Library_Management_System.Helpers;
 using Library_Management_System.Models;
@@ -71,7 +72,7 @@ namespace Library_Management_System.Controllers
 
                 if(authorCreateVM.Image is null)
                 {
-                    authorCreateVM.ImageUrl =  SetDefaultImage(authorCreateVM);
+                    authorCreateVM.ImageUrl =  SetDefaultImage(authorCreateVM.Gender);
                 }
                 else
                 {
@@ -113,16 +114,14 @@ namespace Library_Management_System.Controllers
             try
             {
             var author = await _context.Authors.FirstOrDefaultAsync(x => x.Id == id);
+
             if (author is null)
             {
                 TempData[AlertHelper.Error] = "Author not found!";
                 return RedirectToAction(nameof(Index));
             }
 
-            string oldImagePath = Path.Combine(Directory.GetCurrentDirectory(), author.ImageUrl.TrimStart('/'));
-
-            if (System.IO.File.Exists(oldImagePath) && !oldImagePath.StartsWith("/default"))
-                System.IO.File.Delete(oldImagePath);
+            author.ImageUrl.DeleteImageFromLocal();
 
             _context.Authors.Remove(author);
             await _context.SaveChangesAsync();
@@ -143,39 +142,42 @@ namespace Library_Management_System.Controllers
             try
             {
 
-            var author = await _context.Authors
-               .AsNoTracking()
-               .Where(a => a.Id == id)
-               .Include(a => a.ContactDetails)
-               .FirstOrDefaultAsync();
+                var author = await _context.Authors
+                .AsNoTracking()
+                .Where(a => a.Id == id)
+                .Include(a => a.ContactDetails)
+                .FirstOrDefaultAsync();
 
-            if (author is null)
-                NotFound();
-
-            var authorVM = new AuthorUpdateVM()
-            {
-                Name = author.Name,
-                Surname = author.Surname,
-                Gender = author.Gender,
-                Biography = author.Biography,
-                BirthDate = author.BirthDate,
-                ImageUrl = author.ImageUrl,
-                AuthorContactUpdateVM = new AuthorContactUpdateVM()
+                if (author == null)
                 {
-                    Email = author.ContactDetails.Email,
-                    PhoneNumber = author.ContactDetails.PhoneNumber
+                    return NotFound(); 
                 }
-            };
 
-            var genderList = new List<SelectListItem>
+                var authorVM = new AuthorUpdateVM()
+                {
+                    Name = author.Name,
+                    Surname = author.Surname,
+                    Gender = author.Gender,  
+                    Biography = author.Biography,
+                    BirthDate = author.BirthDate,
+                    ImageUrl = author.ImageUrl,
+                    AuthorContactUpdateVM = new AuthorContactUpdateVM()
+                    {
+                        Email = author.ContactDetails.Email,
+                        PhoneNumber = author.ContactDetails.PhoneNumber
+                    }
+                };
+
+                var genderList = new List<SelectListItem>
             {
                 new SelectListItem { Value = "Male", Text = "Male" },
                 new SelectListItem { Value = "Female", Text = "Female" }
             };
 
-            ViewBag.GenderList = new SelectList(genderList, "Value", "Text", author.Gender);
+                ViewBag.GenderList = new SelectList(genderList, "Value", "Text", author.Gender);
 
-            return View(authorVM);
+
+                return View(authorVM);
             }
             catch (Exception ex)
             {
@@ -195,6 +197,10 @@ namespace Library_Management_System.Controllers
                 .Include(a => a.ContactDetails)
                 .FirstOrDefaultAsync();
 
+                if (author is null)
+                {
+                    return NotFound();
+                }
 
             authorUpdateVM.ImageUrl = author.ImageUrl;
 
@@ -206,6 +212,7 @@ namespace Library_Management_System.Controllers
 
             if (authorUpdateVM.Image is null)
             {
+                author.ImageUrl = SetDefaultImage(authorUpdateVM.Gender);
                 author.Name = authorUpdateVM.Name;
                 author.Surname = authorUpdateVM.Surname;
                 author.Gender = authorUpdateVM.Gender;
@@ -226,7 +233,7 @@ namespace Library_Management_System.Controllers
             }
             else
             {
-                authorUpdateVM.Image.DeleteImageFromLocal();
+                authorUpdateVM.ImageUrl.DeleteImageFromLocal();
                 authorUpdateVM.Image.FileTypeCheck(ModelState);
 
                 authorUpdateVM.ImageUrl = await authorUpdateVM.Image.SaveImage("authors");
@@ -308,12 +315,11 @@ namespace Library_Management_System.Controllers
                 TempData[AlertHelper.Error] = "No authors found to delete!";
                 return RedirectToAction(nameof(Index));
             }
-            string folderPath = Path.Combine(Directory.GetCurrentDirectory(), "uploads", "authors");
-            if (System.IO.File.Exists(folderPath))
-            {
-                Directory.Delete(folderPath);
-            }
-
+            foreach(var author in authors)
+                {
+                    author.ImageUrl.DeleteImageFromLocal();
+                }
+          
             _context.Authors.RemoveRange(authors);
             await _context.SaveChangesAsync();
 
@@ -328,14 +334,14 @@ namespace Library_Management_System.Controllers
             }
         }
 
-        private string SetDefaultImage(AuthorCreateVM authorCreateVM)
+        private string SetDefaultImage(Gender gender)
         {
             string imageUrl;
 
             string maleImage = "/img/default/male-avatar.png";
             string femaleImage = "/img/default/female-avatar.png";
 
-            if (authorCreateVM.Gender is Enums.Gender.Male)
+            if (gender is Enums.Gender.Male)
             {
                 imageUrl = maleImage;
             }
@@ -346,5 +352,7 @@ namespace Library_Management_System.Controllers
 
             return imageUrl;
         }
+
+        
     }
 }

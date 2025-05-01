@@ -43,6 +43,7 @@ namespace Library_Management_System.Controllers
         {
             if (!ModelState.IsValid)
             {
+                TempData[AlertHelper.Error] = "Validation failed. Unable to create the publisher.";
                 return View(publisherCreateVM);
             }
 
@@ -69,17 +70,17 @@ namespace Library_Management_System.Controllers
             try
             {
                 var publisher = await _context.Publishers.FirstOrDefaultAsync(x => x.Id == id);
+
                 if (publisher is null)
                 {
-                    TempData[AlertHelper.Error] = "publisher not found!";
+                    TempData[AlertHelper.Error] = "Publisher not found!";
                     return RedirectToAction(nameof(Index));
                 }
-
 
                 _context.Publishers.Remove(publisher);
                 await _context.SaveChangesAsync();
 
-                TempData[AlertHelper.Success] = "publisher successfully deleted!";
+                TempData[AlertHelper.Success] = "Publisher successfully deleted!";
                 return RedirectToAction(nameof(Index));
 
             }
@@ -114,13 +115,18 @@ namespace Library_Management_System.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Update(int id, PublisherUpdateVM publisherUpdateVM)
         {
-
             if (!ModelState.IsValid)
             {
-                TempData[AlertHelper.Error] = "Validation failed. Unable to save the author's details.";
+                TempData[AlertHelper.Error] = "Validation failed. Unable to save the publisher's details.";
                 return View(publisherUpdateVM);
             }
+
             var publisher = await _context.Publishers.FirstOrDefaultAsync(x => x.Id == id);
+
+            if(publisher is null)
+            {
+                return NotFound();
+            }
 
             publisher.Name = publisherUpdateVM.Name;
             publisher.Adress = publisherUpdateVM.Adress;
@@ -129,7 +135,7 @@ namespace Library_Management_System.Controllers
             _context.Update(publisher);
             await _context.SaveChangesAsync();
 
-            TempData[AlertHelper.Success] = "Author successfully updated!";
+            TempData[AlertHelper.Success] = "Publisher successfully updated!";
 
             return RedirectToAction(nameof(Index));
         }
@@ -157,7 +163,7 @@ namespace Library_Management_System.Controllers
         {
             try
             {
-                var publishers = await _context.Publishers.AsNoTracking().ToListAsync();
+                var publishers = await _context.Publishers.ToListAsync();
 
                 if (!publishers.Any())
                 {

@@ -2,6 +2,7 @@
 using Library_Management_System.Extensions;
 using Library_Management_System.Helpers;
 using Library_Management_System.Models;
+using Library_Management_System.ViewModels.Author;
 using Library_Management_System.ViewModels.Book;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -17,6 +18,8 @@ namespace Library_Management_System.Controllers
         {
             _context = context;
         }
+
+        #region Index
 
         [HttpGet]
         public async Task<IActionResult> Index()
@@ -34,6 +37,10 @@ namespace Library_Management_System.Controllers
             return View(bookVMs);
         }
 
+        #endregion
+
+        #region Create
+
         [HttpGet]
         public async Task<IActionResult> Create()
         {
@@ -49,7 +56,11 @@ namespace Library_Management_System.Controllers
             {
                 await LoadDropdownsAsync();
 
+                if (bookCreateVM.Image != null)
+                {
                 bookCreateVM.Image.FileTypeCheck(ModelState);
+
+                }
 
                 if (bookCreateVM.SelectedAuthorIds == null || !bookCreateVM.SelectedAuthorIds.Any())
                 {
@@ -74,7 +85,7 @@ namespace Library_Management_System.Controllers
 
                 if (bookCreateVM.Image == null)
                 {
-                    book.ImageUrl = "/img/default/book-cover-placeholder.png";
+                    book.ImageUrl = "/img/default/book.png";
                 }
                 else
                 {
@@ -99,19 +110,23 @@ namespace Library_Management_System.Controllers
                 TempData[AlertHelper.Success] = "Book successfully created!";
                 return RedirectToAction(nameof(Index)); 
             }
-            catch (Exception ex)
+            catch
             {
                 return View("Error");
             }
         }
 
+        #endregion
 
+        #region Delete
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(int id)
         {
-           var book = await _context.Books.FirstOrDefaultAsync(x=>x.Id==id);
+            try
+            {
+           var book = await _context.Books.FindAsync(id);
 
            if(book is null)
             {
@@ -125,7 +140,49 @@ namespace Library_Management_System.Controllers
 
             TempData[AlertHelper.Success] = "Book successfully deleted!";
             return RedirectToAction(nameof(Index));
+
+            }
+            catch
+            {
+                return View("_Error");
+            }
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]  
+        public async Task<IActionResult> DeleteAll()
+        {
+            try
+            {
+                var books = await _context.Books.ToListAsync();
+
+                if (!books.Any())
+                {
+                    TempData[AlertHelper.Error] = "No books found to delete!";
+                    return RedirectToAction(nameof(Index));
+                }
+                foreach (var book in books)
+                {
+                    book.ImageUrl.DeleteImageFromLocal();
+                }
+
+                _context.Books.RemoveRange(books);
+                await _context.SaveChangesAsync();
+
+                TempData[AlertHelper.Success] = "All books successfully deleted!";
+
+                return RedirectToAction(nameof(Index));
+
+            }
+            catch
+            {
+                return View("_Error");
+            }
+        }
+
+        #endregion
+
+        #region Update
 
         [HttpGet]
         public async Task<IActionResult> Update(int id)
@@ -137,11 +194,12 @@ namespace Library_Management_System.Controllers
             .Include(b => b.Publisher)
             .Include(b => b.BookAuthors)
             .ThenInclude(ba => ba.Author)
-            .FirstOrDefaultAsync(b => b.Id == id);
+            .FirstOrDefaultAsync(b=> b.Id == id);
 
-            if (book == null)
+            if (book is null)
             {
-                return NotFound();
+                TempData[AlertHelper.Error] = "Book not found.";
+                return RedirectToAction(nameof(Index));
             }
 
             var bookUpdateVM = new BookUpdateVM()
@@ -168,14 +226,14 @@ namespace Library_Management_System.Controllers
             await LoadDropdownsAsync(); 
 
             var book = await _context.Books
-                .Where(x => x.Id == id)
                 .Include(b => b.BookAuthors)  
                 .ThenInclude(ba => ba.Author)
-                .FirstOrDefaultAsync();
+                .FirstOrDefaultAsync(b=> b.Id == id);
 
             if (book is null)
-            { 
-                return NotFound();  
+            {
+                TempData[AlertHelper.Error] = "Book not found.";
+                return RedirectToAction(nameof(Index));
             }
 
             bookUpdateVM.ImageUrl = book.ImageUrl;
@@ -209,6 +267,7 @@ namespace Library_Management_System.Controllers
 
                 if (!ModelState.IsValid)
                 {
+                    TempData[AlertHelper.Error] = "Validation failed. Unable to save the book's details.";
                     return View(bookUpdateVM);  
                 }
 
@@ -230,6 +289,9 @@ namespace Library_Management_System.Controllers
             }
         }
 
+        #endregion
+
+        #region Detail
 
         [HttpGet]
         public async Task<IActionResult> Detail(int id)
@@ -241,7 +303,11 @@ namespace Library_Management_System.Controllers
                 .ThenInclude(b=>b.Author)
                 .FirstOrDefaultAsync(x=>x.Id == id);
 
-            if (book is null) return NotFound();
+            if (book is null)
+            {
+                TempData[AlertHelper.Error] = "Book not found.";
+                return RedirectToAction(nameof(Index));
+            }
 
             var bookVM = new BookDetailVM()
             {
@@ -260,37 +326,9 @@ namespace Library_Management_System.Controllers
 
             
         }
+        #endregion
 
-        [HttpPost]
-        public async Task<IActionResult> DeleteAll()
-        {
-            try
-            {
-                var books = await _context.Books.AsNoTracking().ToListAsync();
-
-                if (!books.Any())
-                {
-                    TempData[AlertHelper.Error] = "No books found to delete!";
-                    return RedirectToAction(nameof(Index));
-                }
-               foreach (var book in books)
-                {
-                    book.ImageUrl.DeleteImageFromLocal();   
-                }
-
-                _context.Books.RemoveRange(books);
-                await _context.SaveChangesAsync();
-
-                TempData[AlertHelper.Success] = "All books successfully deleted!";
-
-                return RedirectToAction(nameof(Index));
-
-            }
-            catch (Exception ex)
-            {
-                return View("_Error");
-            }
-        }
+        #region Helper Methods
 
         private void UpdateAuthors(Book book, List<int> selectedAuthorIds)
         {
@@ -332,6 +370,6 @@ namespace Library_Management_System.Controllers
                 }).ToListAsync();
         }
 
-
+        #endregion
     }
 }

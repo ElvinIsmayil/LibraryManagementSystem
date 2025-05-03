@@ -16,6 +16,8 @@ namespace Library_Management_System.Controllers
             _context = context;
         }
 
+        #region Index
+
         [HttpGet]
         public async Task<IActionResult> Index()
         {
@@ -31,8 +33,12 @@ namespace Library_Management_System.Controllers
             return View(publisherVMs);
         }
 
+        #endregion
+
+        #region Create
+
         [HttpGet]
-        public async Task<IActionResult> Create()
+        public IActionResult Create()
         {
             return View();
         }
@@ -41,6 +47,8 @@ namespace Library_Management_System.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(PublisherCreateVM publisherCreateVM)
         {
+            try
+            {
             if (!ModelState.IsValid)
             {
                 TempData[AlertHelper.Error] = "Validation failed. Unable to create the publisher.";
@@ -61,7 +69,17 @@ namespace Library_Management_System.Controllers
 
 
             return RedirectToAction(nameof(Index));
+
+            }
+            catch
+            {
+                return View("_Error");
+            }
         }
+
+        #endregion
+
+        #region Delete
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -69,7 +87,7 @@ namespace Library_Management_System.Controllers
         {
             try
             {
-                var publisher = await _context.Publishers.FirstOrDefaultAsync(x => x.Id == id);
+                var publisher = await _context.Publishers.FindAsync(id);
 
                 if (publisher is null)
                 {
@@ -84,81 +102,14 @@ namespace Library_Management_System.Controllers
                 return RedirectToAction(nameof(Index));
 
             }
-            catch (Exception ex)
+            catch
             {
                 return View("_Error");
             }
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Update(int id)
-        {
-            var publisher = await _context.Publishers.FirstOrDefaultAsync(x => x.Id == id);
-
-            if (publisher is null)
-            {
-                return NotFound();
-            }
-
-            var publisherVM = new PublisherUpdateVM()
-            {
-                Name = publisher.Name,
-                Adress = publisher.Adress,
-                Rating = publisher.Rating,
-            };
-
-            return View(publisherVM);
-        }
-
-
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Update(int id, PublisherUpdateVM publisherUpdateVM)
-        {
-            if (!ModelState.IsValid)
-            {
-                TempData[AlertHelper.Error] = "Validation failed. Unable to save the publisher's details.";
-                return View(publisherUpdateVM);
-            }
-
-            var publisher = await _context.Publishers.FirstOrDefaultAsync(x => x.Id == id);
-
-            if(publisher is null)
-            {
-                return NotFound();
-            }
-
-            publisher.Name = publisherUpdateVM.Name;
-            publisher.Adress = publisherUpdateVM.Adress;
-            publisher.Rating = publisherUpdateVM.Rating;
-
-            _context.Update(publisher);
-            await _context.SaveChangesAsync();
-
-            TempData[AlertHelper.Success] = "Publisher successfully updated!";
-
-            return RedirectToAction(nameof(Index));
-        }
-
-        [HttpGet]
-        public async Task<IActionResult> Detail(int id)
-        {
-            var publisher = await _context.Publishers.FirstOrDefaultAsync(x => x.Id == id);
-
-            if (publisher is null) return NotFound();
-
-            var publisherVM = new PublisherDetailVM()
-            {
-                Id = id,
-                Name = publisher.Name,
-                Adress = publisher.Adress,
-                Rating = publisher.Rating,
-            };
-
-            return View(publisherVM);
-        }
-
-        [HttpPost]
+        [ValidateAntiForgeryToken]  
         public async Task<IActionResult> DeleteAll()
         {
             try
@@ -179,11 +130,104 @@ namespace Library_Management_System.Controllers
                 return RedirectToAction(nameof(Index));
 
             }
-            catch (Exception ex)
+            catch
             {
                 return View("_Error");
             }
         }
+
+        #endregion
+
+        #region Update
+
+        [HttpGet]
+        public async Task<IActionResult> Update(int id)
+        {
+            var publisher = await _context.Publishers.FindAsync(id);
+
+            if (publisher is null)
+            {
+                TempData[AlertHelper.Error] = "Publisher not found.";
+                return RedirectToAction(nameof(Index));
+            }
+
+            var publisherUpdateVM = new PublisherUpdateVM()
+            {
+                Name = publisher.Name,
+                Adress = publisher.Adress,
+                Rating = publisher.Rating,
+            };
+
+            return View(publisherUpdateVM);
+        }
+
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Update(int id, PublisherUpdateVM publisherUpdateVM)
+        {
+            try
+            {
+            if (!ModelState.IsValid)
+            {
+                TempData[AlertHelper.Error] = "Validation failed. Unable to save the publisher's details.";
+                return View(publisherUpdateVM);
+            }
+
+            var publisher = await _context.Publishers.FindAsync(id);
+
+            if(publisher is null)
+                {
+                    TempData[AlertHelper.Error] = "Publisher not found.";
+                    return RedirectToAction(nameof(Index));
+                }
+
+            publisher.Name = publisherUpdateVM.Name;
+            publisher.Adress = publisherUpdateVM.Adress;
+            publisher.Rating = publisherUpdateVM.Rating;
+
+            _context.Update(publisher);
+            await _context.SaveChangesAsync();
+
+            TempData[AlertHelper.Success] = "Publisher successfully updated!";
+
+            return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View("_Error");
+            }
+        }
+
+        #endregion
+
+        #region Detail
+
+        [HttpGet]
+        public async Task<IActionResult> Detail(int id)
+        {
+            var publisher = await _context.Publishers.AsNoTracking().FirstOrDefaultAsync(p=>p.Id== id);
+
+            if (publisher is null)
+            {
+                TempData[AlertHelper.Error] = "Publisher not found.";
+                return RedirectToAction(nameof(Index));
+            }
+
+            var publisherDetailVM = new PublisherDetailVM()
+            {
+                Id = id,
+                Name = publisher.Name,
+                Adress = publisher.Adress,
+                Rating = publisher.Rating,
+            };
+
+            return View(publisherDetailVM);
+        }
+
+        #endregion
+
 
 
     }

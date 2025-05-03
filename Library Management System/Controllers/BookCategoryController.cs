@@ -1,7 +1,6 @@
 ﻿using Library_Management_System.DAL;
 using Library_Management_System.Helpers;
 using Library_Management_System.Models;
-using Library_Management_System.ViewModels.Author;
 using Library_Management_System.ViewModels.BookCategory;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -17,6 +16,8 @@ namespace Library_Management_System.Controllers
             _context = context;
         }
 
+        #region Index
+
         [HttpGet]
         public async Task<IActionResult> Index()
         {
@@ -30,8 +31,12 @@ namespace Library_Management_System.Controllers
             return View(categoryVMs);
         }
 
+        #endregion
+
+        #region Create
+
         [HttpGet]
-        public async Task<IActionResult> Create()
+        public IActionResult Create()
         {
             return View();
         }
@@ -40,7 +45,9 @@ namespace Library_Management_System.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(BookCategoryCreateVM bookCategoryCreateVM)
         {
-            if(!ModelState.IsValid)
+            try
+            {
+            if (!ModelState.IsValid)
             {
                 return View(bookCategoryCreateVM);
             }
@@ -58,8 +65,15 @@ namespace Library_Management_System.Controllers
 
             return RedirectToAction(nameof(Index));
 
-
+            }
+            catch
+            {
+                return View("_Error");
+            }
         }
+        #endregion
+
+        #region Delete
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -67,35 +81,66 @@ namespace Library_Management_System.Controllers
         {
             try
             {
-                var bookCategory = await _context.BookCategories.FirstOrDefaultAsync(x => x.Id == id);
+                var bookCategory = await _context.BookCategories.FindAsync(id);
                 if (bookCategory is null)
                 {
-                    TempData[AlertHelper.Error] = "bookCategory not found!";
+                    TempData[AlertHelper.Error] = "Book Category not found!";
                     return RedirectToAction(nameof(Index));
                 }
 
-              
                 _context.BookCategories.Remove(bookCategory);
                 await _context.SaveChangesAsync();
 
-                TempData[AlertHelper.Success] = "bookCategory successfully deleted!";
+                TempData[AlertHelper.Success] = "Book Category successfully deleted!";
                 return RedirectToAction(nameof(Index));
-
             }
-            catch (Exception ex)
+            catch
             {
                 return View("_Error");
             }
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteAll()
+        {
+            try
+            {
+                var bookCategories = await _context.BookCategories.ToListAsync();
+
+                if (!bookCategories.Any())
+                {
+                    TempData[AlertHelper.Error] = "No Book Categories found to delete!";
+                    return RedirectToAction(nameof(Index));
+                }
+
+                _context.BookCategories.RemoveRange(bookCategories);
+                await _context.SaveChangesAsync();
+
+                TempData[AlertHelper.Success] = "All Book Categories successfully deleted!";
+
+                return RedirectToAction(nameof(Index));
+
+            }
+            catch
+            {
+                return View("_Error");
+            }
+        }
+
+        #endregion
+
+        #region Update
+
         [HttpGet]
         public async Task<IActionResult> Update(int id)
         {
-            var bookCategory = await _context.BookCategories.FirstOrDefaultAsync(x=>x.Id == id);
+            var bookCategory = await _context.BookCategories.FindAsync(id);
 
-            if(bookCategory is null)
+            if (bookCategory is null)
             {
-                return NotFound();
+                TempData[AlertHelper.Error] = "Book Category not found.";
+                return RedirectToAction(nameof(Index));
             }
 
             var bookCategoryVM = new BookCategoryUpdateVM()
@@ -111,71 +156,66 @@ namespace Library_Management_System.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Update(int id, BookCategoryUpdateVM bookCategoryUpdateVM)
         {
-            var bookCategory = await _context.BookCategories.FirstOrDefaultAsync(x => x.Id == id);
-
-            if(!ModelState.IsValid)
+            try
             {
-                TempData[AlertHelper.Error] = "Validation failed. Unable to save the author's details.";
+
+            var bookCategory = await _context.BookCategories.FindAsync(id);
+
+            if (bookCategory is null)
+            {
+                TempData[AlertHelper.Error] = "Book Category not found.";
+                return RedirectToAction(nameof(Index));
+            }
+
+            if (!ModelState.IsValid)
+            {
+                TempData[AlertHelper.Error] = "Validation failed. Unable to save the book category's details.";
                 return View(bookCategoryUpdateVM);
             }
-            if(bookCategory is null)
-            {
-                return NotFound();
-            }
+
 
             bookCategory.Name = bookCategoryUpdateVM.Name;
 
             _context.Update(bookCategory);
             await _context.SaveChangesAsync();
 
-            TempData[AlertHelper.Success] = "Author successfully updated!";
+            TempData[AlertHelper.Success] = "Book Category successfully updated!";
 
             return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View("_Error");
+            }
         }
+
+        #endregion
+
+        #region Detail
 
         [HttpGet]
         public async Task<IActionResult> Detail(int id)
         {
-            var bookCategory = await _context.BookCategories.FirstOrDefaultAsync(x => x.Id == id);
+            var bookCategory = await _context.BookCategories.AsNoTracking().FirstOrDefaultAsync(bc=>bc.Id == id);
 
-            if (bookCategory is null) return NotFound();
+            if (bookCategory is null)
+            {
+                TempData[AlertHelper.Error] = "Book Category not found.";
+                return RedirectToAction(nameof(Index));
+            }
 
-            var bookCategoryVM = new BookCategoryDetailVM()
+            var bookCategoryDetailVM = new BookCategoryDetailVM()
             {
                 Id = id,
                 Name = bookCategory.Name,
             };
 
-            return View(bookCategoryVM);
+            return View(bookCategoryDetailVM);
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteAll()
-        {
-            try
-            {
-                var bookCategories = await _context.BookCategories.AsNoTracking().ToListAsync();
+        #endregion
 
-                if (!bookCategories.Any())
-                {
-                    TempData[AlertHelper.Error] = "No bookCategories found to delete!";
-                    return RedirectToAction(nameof(Index));
-                }
-
-                _context.BookCategories.RemoveRange(bookCategories);
-                await _context.SaveChangesAsync();
-
-                TempData[AlertHelper.Success] = "All bookCategories successfully deleted!";
-
-                return RedirectToAction(nameof(Index));
-
-            }
-            catch (Exception ex)
-            {
-                return View("_Error");
-            }
-        }
+        
 
 
     }

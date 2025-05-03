@@ -8,15 +8,12 @@ namespace Library_Management_System.Extensions
     {
         public static void FileTypeCheck(this IFormFile file, ModelStateDictionary modelState)
         {
-            if (file is not null)
-            {
-
                 if (!file.ContentType.StartsWith("image/"))
                 {
                     modelState.AddModelError("Image", "You can only upload image files!");
                 }
 
-                const int MaxFileSizeInMB = 2;
+                const int MaxFileSizeInMB = 5;
                 if (file.Length > MaxFileSizeInMB * 1024 * 1024)
                 {
                     modelState.AddModelError("Image", $"The image file size should not be larger than {MaxFileSizeInMB} MB");
@@ -28,8 +25,6 @@ namespace Library_Management_System.Extensions
                 {
                     modelState.AddModelError("Image", "Only .jpg, .jpeg, and .png files are allowed.");
                 }
-            }
-
         }
         public static async Task<String> SaveImage(this IFormFile file,string folderName)
         {
@@ -64,7 +59,7 @@ namespace Library_Management_System.Extensions
             if (string.IsNullOrWhiteSpace(imageUrl))
                 return;
 
-            if (imageUrl.StartsWith("/default", StringComparison.OrdinalIgnoreCase))
+            if (imageUrl.StartsWith("/img/default", StringComparison.OrdinalIgnoreCase))
                 return;
 
             string fullPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", imageUrl.TrimStart('/'));

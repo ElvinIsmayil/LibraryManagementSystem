@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Library_Management_System.ViewModels.Author
+﻿namespace Library_Management_System.ViewModels.Author
 {
     public class AuthorVM
     {
@@ -13,3 +11,4 @@ namespace Library_Management_System.ViewModels.Author
         public string ImageUrl { get; set; }
     }
 }
+            

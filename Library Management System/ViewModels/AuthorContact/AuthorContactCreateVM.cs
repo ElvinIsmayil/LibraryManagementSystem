@@ -9,7 +9,8 @@ namespace Library_Management_System.ViewModels.AuthorContact
         public string Email { get; set; }
 
         [Required]
-        
+
         public string PhoneNumber { get; set; }
     }
+  
 }

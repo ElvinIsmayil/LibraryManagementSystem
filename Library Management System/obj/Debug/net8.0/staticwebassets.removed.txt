@@ -1,1 +1,1 @@
-C:\Users\Elvin\Desktop\C#\MVC\Library Management System\Library Management System\wwwroot\img\default\book-cover-placeholder.png
+C:\Users\Elvin\Desktop\C#\MVC\Library Management System\Library Management System\wwwroot\uploads\authors\767b9b36-9439-4137-8c1d-86861eadda441736193550703.jpeg

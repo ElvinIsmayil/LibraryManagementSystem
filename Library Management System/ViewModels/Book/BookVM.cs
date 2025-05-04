@@ -1,4 +1,5 @@
 ﻿using Library_Management_System.ViewModels.BookCategory;
+using System.ComponentModel.DataAnnotations;
 namespace Library_Management_System.ViewModels.Book
 {
     public class BookVM

@@ -14,7 +14,7 @@ namespace Library_Management_System.ViewModels.Book
 
         public string BookCategoryName { get; set; }  
         public string PublisherName { get; set; } 
-        public List<string> AuthorNames { get; set; }
+        public List<string> AuthorFullNames { get; set; }
 
 
     }

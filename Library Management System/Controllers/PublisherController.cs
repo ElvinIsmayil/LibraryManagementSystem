@@ -1,6 +1,7 @@
 ﻿using Library_Management_System.DAL;
 using Library_Management_System.Helpers;
 using Library_Management_System.Models;
+using Library_Management_System.ViewModels.Book;
 using Library_Management_System.ViewModels.Publisher;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -32,6 +33,45 @@ namespace Library_Management_System.Controllers
 
             return View(publisherVMs);
         }
+
+        [HttpGet("publishers/search")]
+        public async Task<IActionResult> Index(string search)
+        {
+            ViewData["SearchTerm"] = search;
+
+            if (string.IsNullOrEmpty(search))
+            {
+                var publishers = await _context.Publishers.ToListAsync();
+                var mappedPublishers = publishers.Select(p => new PublisherVM()
+                {
+                   Id = p.Id,
+                   Name = p.Name,
+                   Adress = p.Adress,
+                   Rating = p.Rating,
+                }).ToList();
+                return View(mappedPublishers);
+            }
+
+            var filteredPublishers = await _context.Publishers.Where(x => x.Name.Contains(search)).ToListAsync();
+
+            if (!filteredPublishers.Any())
+            {
+                TempData[AlertHelper.Error] = "No publishers found matching the search term!";
+                return View();
+            }
+
+            var mappedFilteredPublishers = filteredPublishers.Select(x => new PublisherVM()
+            {
+               Id=x.Id,
+               Name=x.Name,
+               Adress=x.Adress, 
+               Rating=x.Rating,
+
+            }).ToList();
+
+            return View(mappedFilteredPublishers);
+        }
+
 
         #endregion
 

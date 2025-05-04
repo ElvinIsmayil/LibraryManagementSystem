@@ -6,7 +6,7 @@
 <h1 class="mt-4 mb-4 text-center text-primary font-weight-bold">Publisher List</h1>
 
 <div class="mb-4 d-flex justify-content-between">
-    <a class="btn btn-success btn-lg shadow-sm" asp-action="Create" asp-controller="Publisher" data-bs-toggle="tooltip" data-bs-placement="top" title="Create Author">
+    <a class="btn btn-success btn-lg shadow-sm" asp-action="Create" asp-controller="Publisher" data-bs-toggle="tooltip" data-bs-placement="top" title="Create Publisher">
         <i class="fa fa-plus-circle"></i> Add Publisher
     </a>
 
@@ -21,32 +21,31 @@
     <table class="table table-bordered table-striped shadow-sm rounded-3">
         <thead class="bg-light">
             <tr class="text-center">
+                <th>#</th> <!-- Index Column Header -->
                 <th>Name</th>
-                <th>Adress</th>
+                <th>Address</th>
                 <th>Rating</th>
                 <th>Operations</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model)
+            @for (int i = 0; i < Model.Count; i++)
             {
                 <tr>
-
-                    <td class="text-center">@item.Name</td>
-                    <td class="text-center">@item.Adress</td>
-                    <td class="text-center">@item.Rating</td>
+                    <td class="text-center">@(@i + 1)</td> <!-- Display Index -->
+                    <td class="text-center">@Model[i].Name</td>
+                    <td class="text-center">@Model[i].Adress</td>
+                    <td class="text-center">@Model[i].Rating</td>
 
                     <td class="text-center">
-                        <form asp-action="Delete" asp-controller="Publisher" asp-route-id="@item.Id" method="post" class="d-inline delete-form" data-name="@item.Name">
-                            <button type="button" class="btn btn-danger delete-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Author"><i class="fa fa-trash-alt"></i></button>
+                        <form asp-action="Delete" asp-controller="Publisher" asp-route-id="@Model[i].Id" method="post" class="d-inline delete-form" data-name="@Model[i].Name">
+                            <button type="button" class="btn btn-danger delete-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Publisher"><i class="fa fa-trash-alt"></i></button>
                         </form>
 
-                        <a asp-action="Detail" asp-controller="Publisher" asp-route-id="@item.Id" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="View Author Details"><i class="fa fa-info-circle"></i></a>
+                        <a asp-action="Detail" asp-controller="Publisher" asp-route-id="@Model[i].Id" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="View Publisher Details"><i class="fa fa-info-circle"></i></a>
                     </td>
                 </tr>
             }
         </tbody>
     </table>
-
 </div>
-

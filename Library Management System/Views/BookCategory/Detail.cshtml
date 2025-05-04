@@ -4,23 +4,68 @@
     ViewData["Title"] = "Book Category Detail";
 }
 
-<h1 class="mt-4 mb-4 text-center text-primary font-weight-bold">Book Category Information</h1>
+<!-- Title Section -->
+<h1 class="mt-4 mb-4 text-center text-primary font-weight-bold">Book Category Details</h1>
 
+<!-- Category Detail Card -->
 <div class="card shadow-lg border-0 mb-4">
     <div class="card-body p-5">
         <div class="row mb-4">
-            <div class="col-sm-8">
-                <div class="row mb-3">
-                    <div class="col-sm-3 font-weight-bold text-dark">Category Name:</div>
-                    <div class="col-sm-9 text-muted">@Model.Name</div>
-                </div>
-                
+            <div class="col-sm-4 font-weight-bold text-dark" style="font-size: 1.2rem; background-color: #f8f9fa; padding: 10px; border-radius: 5px;">
+                Category Name:
+            </div>
+            <div class="col-sm-8 text-muted" style="font-size: 1.2rem; padding: 10px; background-color: #f8f9fa; border-radius: 5px;">
+                @Model.Name
             </div>
         </div>
     </div>
 </div>
 
+<!-- Books in this Category -->
+@if (Model.BookVMs != null && Model.BookVMs.Any())
+{
+    <h3 class="mt-4 mb-3 text-primary">Books in This Category</h3>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover shadow-sm rounded-3">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Title</th>
+                    <th scope="col" class="text-center">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var book in Model.BookVMs.Select((book, index) => new { book, index }))
+                {
+                    <tr>
+                        <!-- Increment index by 1 to start from 1 -->
+                        <th scope="row">@((book.index + 1).ToString())</th>
+                        <td>@book.book.Title</td>
+                        <td class="text-center">
+                            <a asp-action="Detail" asp-route-id="@book.book.Id" asp-controller="Book" class="btn btn-info btn-sm px-4 py-2">
+                                <i class="fa-solid fa-eye"></i> View Detail
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <div class="alert alert-info mt-3" role="alert">
+        <i class="fa-solid fa-circle-info"></i> There are no books in this category yet.
+    </div>
+}
+
+<!-- Buttons for Category Actions -->
 <div class="d-flex justify-content-between mt-4">
-    <a asp-action="Update" asp-route-id="@Model.Id" class="btn btn-primary btn-lg px-4 py-2 rounded-pill shadow-sm"><i class="fa-regular fa-pen-to-square"></i> Update</a>
-    <a asp-action="Index" class="btn btn-secondary btn-lg px-4 py-2 rounded-pill shadow-sm"><i class="fa-regular fa-turn-left"></i> Back</a>
+    <a asp-action="Update" asp-route-id="@Model.Id" class="btn btn-primary btn-sm px-4 py-2">
+        <i class="fa-regular fa-pen-to-square"></i> Update Category
+    </a>
+    <a asp-action="Index" class="btn btn-secondary btn-sm px-4 py-2">
+        <i class="fa-solid fa-arrow-left"></i> Back to Categories
+    </a>
 </div>

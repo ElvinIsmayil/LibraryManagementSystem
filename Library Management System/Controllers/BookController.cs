@@ -37,6 +37,47 @@ namespace Library_Management_System.Controllers
             return View(bookVMs);
         }
 
+        [HttpGet("books/search")]
+        public async Task<IActionResult> Index(string search)
+        {
+            ViewData["SearchTerm"] = search;
+
+            if (string.IsNullOrEmpty(search))
+            {
+                var books = await _context.Books.ToListAsync();
+                var mappedBooks = books.Select(b => new BookVM()
+                {
+                    Id = b.Id,
+                    Title = b.Title,
+                    Description= b.Description,
+                    PublishedDate = b.PublishedDate,
+                    ImageUrl = b.ImageUrl,
+
+                }).ToList();
+                return View(mappedBooks);
+            }
+
+            var filteredBooks = await _context.Books.Where(x=>x.Title.Contains(search)).ToListAsync();
+
+            if (!filteredBooks.Any())
+            {
+                TempData[AlertHelper.Error] = "No books found matching the search term!";
+                return View();
+            }
+
+            var mappedFilteredBooks = filteredBooks.Select(x => new BookVM()
+            {
+                Id = x.Id,
+                Title = x.Title,
+                Description = x.Description,
+                PublishedDate = x.PublishedDate,
+                ImageUrl = x.ImageUrl,
+
+            }).ToList();
+
+            return View(mappedFilteredBooks);
+        }
+
         #endregion
 
         #region Create
@@ -58,8 +99,7 @@ namespace Library_Management_System.Controllers
 
                 if (bookCreateVM.Image != null)
                 {
-                bookCreateVM.Image.FileTypeCheck(ModelState);
-
+                    bookCreateVM.Image.FileTypeCheck(ModelState);
                 }
 
                 if (bookCreateVM.SelectedAuthorIds == null || !bookCreateVM.SelectedAuthorIds.Any())
@@ -318,7 +358,7 @@ namespace Library_Management_System.Controllers
                 PageCount = book.PageCount,
                 PublishedDate = book.PublishedDate,
                 BookCategoryName = book.BookCategory.Name,
-                AuthorNames = book.BookAuthors.Select(ba => ba.Author.Name).ToList(),
+                AuthorFullNames = book.BookAuthors.Select(ba => ba.Author.Name + " " + ba.Author.Surname).ToList(),
                 PublisherName = book.Publisher.Name,
             };
 
@@ -359,14 +399,14 @@ namespace Library_Management_System.Controllers
                 .Select(x => new SelectListItem
                 {
                     Value = x.Id.ToString(),
-                    Text = x.Name
+                    Text = x.Name + " " + x.Surname
                 }).ToListAsync();
 
             ViewBag.Publishers = await _context.Publishers
                 .Select(x => new SelectListItem
                 {
                     Value = x.Id.ToString(),
-                    Text = x.Name
+                    Text = x.Name  
                 }).ToListAsync();
         }
 

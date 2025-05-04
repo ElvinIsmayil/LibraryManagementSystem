@@ -6,7 +6,7 @@
 <h1 class="mt-4 mb-4 text-center text-primary font-weight-bold">Book Category List</h1>
 
 <div class="mb-4 d-flex justify-content-between">
-    <a class="btn btn-success btn-lg shadow-sm" asp-action="Create" asp-controller="BookCategory" data-bs-toggle="tooltip" data-bs-placement="top" title="Create Author">
+    <a class="btn btn-success btn-lg shadow-sm" asp-action="Create" asp-controller="BookCategory" data-bs-toggle="tooltip" data-bs-placement="top" title="Create Book Category">
         <i class="fa fa-plus-circle"></i> Add Book Category
     </a>
 
@@ -21,27 +21,26 @@
     <table class="table table-bordered table-striped shadow-sm rounded-3">
         <thead class="bg-light">
             <tr class="text-center">
+                <th>#</th> 
                 <th>Name</th>
                 <th>Operations</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model)
+            @for (int i = 0; i < Model.Count; i++)
             {
                 <tr>
-                    
-                    <td class="text-center">@item.Name</td>
+                    <td class="text-center">@(@i + 1)</td>
+                    <td class="text-center">@Model[i].Name</td>
                     <td class="text-center">
-                        <form asp-action="Delete" asp-controller="BookCategory" asp-route-id="@item.Id" method="post" class="d-inline delete-form" data-name="@item.Name">
-                            <button type="button" class="btn btn-danger delete-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Author"><i class="fa fa-trash-alt"></i></button>
+                        <form asp-action="Delete" asp-controller="BookCategory" asp-route-id="@Model[i].Id" method="post" class="d-inline delete-form" data-name="@Model[i].Name">
+                            <button type="button" class="btn btn-danger delete-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Category"><i class="fa fa-trash-alt"></i></button>
                         </form>
 
-                        <a asp-action="Detail" asp-controller="BookCategory" asp-route-id="@item.Id" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="View Author Details"><i class="fa fa-info-circle"></i></a>
+                        <a asp-action="Detail" asp-controller="BookCategory" asp-route-id="@Model[i].Id" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="View Category Details"><i class="fa fa-info-circle"></i></a>
                     </td>
                 </tr>
             }
         </tbody>
     </table>
-
 </div>
-

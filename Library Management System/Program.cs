@@ -1,3 +1,4 @@
+
 namespace Library_Management_System
 {
     public class Program
@@ -11,6 +12,8 @@ namespace Library_Management_System
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 
             var app = builder.Build();
 

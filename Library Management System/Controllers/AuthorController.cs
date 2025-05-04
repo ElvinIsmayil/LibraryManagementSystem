@@ -27,8 +27,56 @@ namespace Library_Management_System.Controllers
         {
             try
             {
-            var author = await _context.Authors.AsNoTracking().ToListAsync();
-            var authorVMs = author.Select(a => new AuthorVM()
+                var author = await _context.Authors.AsNoTracking().ToListAsync();
+                var authorVMs = author.Select(a => new AuthorVM()
+                {
+                    Id = a.Id,
+                    Name = a.Name,
+                    Surname = a.Surname,
+                    BirthDate = a.BirthDate,
+                    ImageUrl = a.ImageUrl
+                }).ToList();
+
+                return View(authorVMs);
+            }
+            catch
+            {
+                return View("_Error");
+            }
+        }
+        [HttpGet("authors/search")]
+        public async Task<IActionResult> Index(string search)
+        {
+
+            ViewData["SearchTerm"] = search;
+
+            if (string.IsNullOrEmpty(search))
+            {
+                var authors = await _context.Authors.ToListAsync();
+                var mappedAuthors = authors.Select(a => new AuthorVM()
+                {
+                    Id = a.Id,
+                    Name = a.Name,
+                    Surname = a.Surname,
+                    BirthDate = a.BirthDate,
+                    ImageUrl = a.ImageUrl
+
+                }).ToList();
+                return View(mappedAuthors);
+            }
+
+
+            var filteredAuthors = await _context.Authors
+                .Where(x => x.Name.Contains(search))
+                .ToListAsync();
+
+            if (!filteredAuthors.Any())
+            {
+                TempData[AlertHelper.Error] = "No authors found matching the search term!";
+                return View();
+            }
+
+            var mappedFilteredAuthors = filteredAuthors.Select(a => new AuthorVM()
             {
                 Id = a.Id,
                 Name = a.Name,
@@ -37,15 +85,8 @@ namespace Library_Management_System.Controllers
                 ImageUrl = a.ImageUrl
             }).ToList();
 
-            return View(authorVMs);
-            }
-            catch
-            {
-                return View("_Error");
-            }
+            return View(mappedFilteredAuthors);
         }
-
-        
 
         #endregion
 
@@ -61,16 +102,16 @@ namespace Library_Management_System.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(AuthorCreateVM authorCreateVM)
         {
-            if(authorCreateVM.Image is not null)
+            if (authorCreateVM.Image is not null)
             {
                 authorCreateVM.Image.FileTypeCheck(ModelState);
             }
 
-                if (!ModelState.IsValid)
-                {
-                    TempData[AlertHelper.Error] = "Validation failed. Unable to create the author";
-                    return View(authorCreateVM);
-                }
+            if (!ModelState.IsValid)
+            {
+                TempData[AlertHelper.Error] = "Validation failed. Unable to create the author";
+                return View(authorCreateVM);
+            }
             try
             {
 
@@ -106,7 +147,7 @@ namespace Library_Management_System.Controllers
 
                 TempData[AlertHelper.Success] = "Author successfully created!";
 
-                
+
                 return RedirectToAction(nameof(Index));
 
             }
@@ -126,23 +167,24 @@ namespace Library_Management_System.Controllers
         {
             try
             {
-            var author = await _context.Authors.FindAsync(id);
+                var author = await _context.Authors.FindAsync(id);
 
-            if (author is null)
-            {
-                TempData[AlertHelper.Error] = "Author not found!";
+                if (author is null)
+                {
+                    TempData[AlertHelper.Error] = "Author not found!";
+                    return RedirectToAction(nameof(Index));
+                }
+
+                author.ImageUrl.DeleteImageFromLocal();
+
+                _context.Authors.Remove(author);
+                await _context.SaveChangesAsync();
+
+                TempData[AlertHelper.Success] = "Author successfully deleted!";
                 return RedirectToAction(nameof(Index));
+
             }
-
-            author.ImageUrl.DeleteImageFromLocal();
-
-            _context.Authors.Remove(author);
-            await _context.SaveChangesAsync();
-
-            TempData[AlertHelper.Success] = "Author successfully deleted!";
-            return RedirectToAction(nameof(Index));
-
-            }catch
+            catch
             {
                 return View("_Error");
             }
@@ -188,9 +230,9 @@ namespace Library_Management_System.Controllers
         [HttpGet]
         public async Task<IActionResult> Update(int id)
         {
-                var author = await _context.Authors
-                .Include(a => a.ContactDetails)
-                .FirstOrDefaultAsync(x=>x.Id == id);
+            var author = await _context.Authors
+            .Include(a => a.ContactDetails)
+            .FirstOrDefaultAsync(x => x.Id == id);
 
 
             if (author is null)
@@ -201,34 +243,32 @@ namespace Library_Management_System.Controllers
 
             LoadGenderDropdown(author);
 
-                var authorUpdateVM = new AuthorUpdateVM()
+            var authorUpdateVM = new AuthorUpdateVM()
+            {
+                Name = author.Name,
+                Surname = author.Surname,
+                Gender = author.Gender,
+                Biography = author.Biography,
+                BirthDate = author.BirthDate,
+                ImageUrl = author.ImageUrl,
+                AuthorContactUpdateVM = new AuthorContactUpdateVM()
                 {
-                    Name = author.Name,
-                    Surname = author.Surname,
-                    Gender = author.Gender,  
-                    Biography = author.Biography,
-                    BirthDate = author.BirthDate,
-                    ImageUrl = author.ImageUrl,
-                    AuthorContactUpdateVM = new AuthorContactUpdateVM()
-                    {
-                        Email = author.ContactDetails.Email,
-                        PhoneNumber = author.ContactDetails.PhoneNumber
-                    }
-                };
-                return View(authorUpdateVM);
+                    Email = author.ContactDetails.Email,
+                    PhoneNumber = author.ContactDetails.PhoneNumber
+                }
+            };
+            return View(authorUpdateVM);
         }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
-
         public async Task<IActionResult> Update(int id, AuthorUpdateVM authorUpdateVM)
         {
             try
             {
-            var author = await _context.Authors
-                .Where(a => a.Id == id)
-                .Include(a => a.ContactDetails)
-                .FirstOrDefaultAsync();
+                var author = await _context.Authors
+                    .Where(a => a.Id == id)
+                    .Include(a => a.ContactDetails)
+                    .FirstOrDefaultAsync();
 
                 if (author is null)
                 {
@@ -238,87 +278,54 @@ namespace Library_Management_System.Controllers
 
                 LoadGenderDropdown(author);
 
-            authorUpdateVM.ImageUrl = author.ImageUrl;
-
-      
-            if (!ModelState.IsValid)
-            {
-                TempData[AlertHelper.Error] = "Validation failed. Unable to save the author's details.";
-                return View(authorUpdateVM);
-            }
-
-            if (authorUpdateVM.Image is null)
-            {
-                author.ImageUrl = SetDefaultImage(authorUpdateVM.Gender);
-                author.Name = authorUpdateVM.Name;
-                author.Surname = authorUpdateVM.Surname;
-                author.Gender = authorUpdateVM.Gender;
-                author.BirthDate = authorUpdateVM.BirthDate;
-                author.ContactDetails = new AuthorContact
+                if (!ModelState.IsValid)
                 {
-                    Email = authorUpdateVM.AuthorContactUpdateVM.Email,
-                    PhoneNumber = authorUpdateVM.AuthorContactUpdateVM.PhoneNumber
-                };
-
-                    author.ValidateBirthdate(ModelState);
-                    author.ContactDetails.ValidateContactInfo(ModelState);
-
-                    if (!ModelState.IsValid)
-                    {
-                        TempData[AlertHelper.Error] = "Validation failed. Unable to save the author's details.";
-                        return View(authorUpdateVM);
-                    }
-
-                    _context.Update(author);
-                await _context.SaveChangesAsync();
-
-                TempData[AlertHelper.Success] = "Author successfully updated!";
-
-                return RedirectToAction(nameof(Index));
-
-            }
-            else
-            {
-                authorUpdateVM.ImageUrl.DeleteImageFromLocal();
-                authorUpdateVM.Image.FileTypeCheck(ModelState);
-
-                author.ImageUrl = await authorUpdateVM.Image.SaveImage("authors");
+                    TempData[AlertHelper.Error] = "Validation failed. Unable to save the author's details.";
+                    return View(authorUpdateVM);
+                }
 
                 author.Name = authorUpdateVM.Name;
                 author.Surname = authorUpdateVM.Surname;
                 author.Gender = authorUpdateVM.Gender;
                 author.BirthDate = authorUpdateVM.BirthDate;
                 author.Biography = authorUpdateVM.Biography;
-                author.ImageUrl = authorUpdateVM.ImageUrl;
+
                 author.ContactDetails = new AuthorContact
                 {
                     Email = authorUpdateVM.AuthorContactUpdateVM.Email,
                     PhoneNumber = authorUpdateVM.AuthorContactUpdateVM.PhoneNumber
                 };
 
-                    author.ValidateBirthdate(ModelState);
-                    author.ContactDetails.ValidateContactInfo(ModelState);
+                if (authorUpdateVM.Image is null)
+                {
+                    author.ImageUrl = SetDefaultImage(authorUpdateVM.Gender);
+                }
+                else
+                {
+                    authorUpdateVM.ImageUrl.DeleteImageFromLocal();
+                    authorUpdateVM.Image.FileTypeCheck(ModelState);
+                    author.ImageUrl = await authorUpdateVM.Image.SaveImage("authors");
+                }
 
-                    if (!ModelState.IsValid)
-                    {
-                        TempData[AlertHelper.Error] = "Validation failed. Unable to save the author's details.";
-                        return View(authorUpdateVM);
-                    }
+                author.ValidateBirthdate(ModelState);
+                author.ContactDetails.ValidateContactInfo(ModelState);
 
-                    _context.Update(author);
+                if (!ModelState.IsValid)
+                {
+                    TempData[AlertHelper.Error] = "Validation failed. Unable to save the author's details.";
+                    return View(authorUpdateVM);
+                }
+
+                _context.Update(author);
                 await _context.SaveChangesAsync();
 
                 TempData[AlertHelper.Success] = "Author successfully updated!";
-
                 return RedirectToAction(nameof(Index));
-
             }
-            }catch
+            catch
             {
                 return View("_Error");
             }
-
-
         }
 
         #endregion
@@ -328,10 +335,10 @@ namespace Library_Management_System.Controllers
         [HttpGet]
         public async Task<IActionResult> Detail(int id)
         {
-            
+
             var author = await _context.Authors
                 .Include(a => a.ContactDetails)
-                .FirstOrDefaultAsync(x=>x.Id==id);
+                .FirstOrDefaultAsync(x => x.Id == id);
 
             if (author is null)
             {
@@ -357,7 +364,7 @@ namespace Library_Management_System.Controllers
 
             return View(authorVM);
 
-            
+
         }
 
         #endregion
@@ -398,9 +405,9 @@ namespace Library_Management_System.Controllers
         private async Task<string> SetAuthorImage(IFormFile image, Gender gender)
         {
             if (image is null)
-                return SetDefaultImage(gender); 
+                return SetDefaultImage(gender);
             else
-                return await image.SaveImage("authors"); 
+                return await image.SaveImage("authors");
         }
 
 

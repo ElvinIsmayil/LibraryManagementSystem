@@ -1,9 +1,11 @@
 ﻿@model List<AuthorVM>
-@{
-    ViewData["Title"] = "Index";
-}
 
 <h1 class="mt-4 mb-4 text-center text-primary font-weight-bold">Author List</h1>
+
+@if (!string.IsNullOrEmpty(ViewData["SearchTerm"]?.ToString()))
+{
+    <h4 class="text-center text-info">Showing results for "<strong>@ViewData["SearchTerm"]</strong>"</h4>
+}
 
 <div class="mb-4 d-flex justify-content-between">
     <a class="btn btn-success btn-lg shadow-sm" asp-action="Create" asp-controller="Author" data-bs-toggle="tooltip" data-bs-placement="top" title="Create Author">
@@ -17,40 +19,47 @@
     </form>
 </div>
 
-<div class="table-responsive">
-    <table class="table table-bordered table-striped shadow-sm rounded-3">
-        <thead class="bg-light">
-            <tr class="text-center">
-                <th>Image</th>
-                <th>Name</th>
-                <th>Surname</th>
-                <th>Birth Date</th>
-                <th>Operations</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td class="text-center">
-                        <img height="80" width="80" src="@item.ImageUrl" alt="Author Image" class="img-fluid rounded-circle shadow-sm" />
-                    </td>
-                    <td class="text-center">@item.Name</td>
-                    <td class="text-center">@item.Surname</td>
-                    <td class="text-center">@item.BirthDate</td>
-                    <td class="text-center">
-                        <form asp-action="Delete" asp-controller="Author" asp-route-id="@item.Id" method="post" class="d-inline delete-form" data-name="@item.Name @item.Surname">
-                            <button type="button" class="btn btn-danger delete-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Author"><i class="fa fa-trash-alt"></i></button>
-                        </form>
-
-                        <a asp-action="Detail" asp-controller="Author" asp-route-id="@item.Id" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="View Author Details"><i class="fa fa-info-circle"></i></a>
-                    </td>
+@if (Model != null && Model.Any())
+{
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped shadow-sm rounded-3">
+            <thead class="bg-light">
+                <tr class="text-center">
+                    <th>#</th>
+                    <th>Image</th>
+                    <th>Fullname</th>
+                    <th>Birth Date</th>
+                    <th>Operations</th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.Count; i++)
+                {
+                    <tr>
+                        <td class="text-center">@(@i + 1)</td>
+                        <td class="text-center">
+                            <img src="@Model[i].ImageUrl" alt="Author Image" class="img-fluid rounded-circle shadow-sm" style="height: 80px; width: 80px; object-fit: cover;" />
+                        </td>
+                        <td class="text-center">@Model[i].Name @Model[i].Surname</td>
+                        <td class="text-center">@Model[i].BirthDate?.ToString("dd/MM/yyyy")</td>
+                        <td class="text-center">
+                            <form asp-action="Delete" asp-controller="Author" asp-route-id="@Model[i].Id" method="post" class="d-inline delete-form" data-name="@Model[i].Name @Model[i].Surname" onsubmit="return confirmDelete('@Model[i].Name @Model[i].Surname');">
+                                <button type="button" class="btn btn-danger delete-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Author">
+                                    <i class="fa fa-trash-alt"></i>
+                                </button>
+                            </form>
 
-</div>
-
-
-
+                            <a asp-action="Detail" asp-controller="Author" asp-route-id="@Model[i].Id" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="View Author Details">
+                                <i class="fa fa-info-circle"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <p class="text-center text-danger">No authors found matching your search query.</p>
+}

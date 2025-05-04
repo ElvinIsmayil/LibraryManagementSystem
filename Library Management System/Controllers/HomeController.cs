@@ -1,4 +1,3 @@
-using System.Diagnostics;
 using Library_Management_System.DAL;
 using Library_Management_System.Models;
 using Library_Management_System.ViewModels;
@@ -51,23 +50,17 @@ namespace Library_Management_System.Controllers
             };
 
             var categoryData = await _context.BookCategories
-    .Select(c => new
-    {
-        Name = c.Name,
-        BookCount = c.Books.Count()
-    })
-    .ToListAsync();
+            .Select(c => new
+            {
+                Name = c.Name,
+                BookCount = c.Books.Count()
+            })
+            .ToListAsync();
 
             dashboardVM.CategoryNames = categoryData.Select(c => c.Name).ToList();
             dashboardVM.CategoryBookCounts = categoryData.Select(c => c.BookCount).ToList();
 
             return View(dashboardVM);
         }
-
-
-
-
-
-
     }
 }

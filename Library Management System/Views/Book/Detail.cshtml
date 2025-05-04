@@ -12,7 +12,8 @@
             <div class="col-sm-4 d-flex justify-content-center align-items-center">
                 @if (!string.IsNullOrEmpty(Model.ImageUrl))
                 {
-                    <img src="@Model.ImageUrl" alt="Book Image" class="img-fluid rounded-circle shadow-lg border" style="max-width: 220px; border-width: 4px; border-color: #f1f1f1;" />
+                        <img height="250" width="250" src="@Model.ImageUrl" alt="Book Image" class="img-fluid shadow-sm" />
+
                 }
                 else
                 {
@@ -46,7 +47,7 @@
                 </div>
                 <div class="row mb-3">
                     <div class="col-sm-3 font-weight-bold text-dark">Authors:</div>
-                    <div class="col-sm-9 text-muted">@string.Join(", ", Model.AuthorNames)</div>
+                    <div class="col-sm-9 text-muted">@string.Join(", ", Model.AuthorFullNames)</div>
                 </div>
             </div>
         </div>

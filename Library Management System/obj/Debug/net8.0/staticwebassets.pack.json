@@ -473,6 +473,50 @@
       "PackagePath": "staticwebassets\\scss\\utilities\\_text.scss"
     },
     {
+      "Id": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\wwwroot\\uploads\\authors\\1242321a-e26e-4183-8c28-a1bfec5c06e7Herbert-George-Wells-Author.jpg",
+      "PackagePath": "staticwebassets\\uploads\\authors\\1242321a-e26e-4183-8c28-a1bfec5c06e7Herbert-George-Wells-Author.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\wwwroot\\uploads\\authors\\298ad52e-9fb4-43e6-b527-e72f08081f5drec58e62v0epfogin4i1o6mu55.jpg",
+      "PackagePath": "staticwebassets\\uploads\\authors\\298ad52e-9fb4-43e6-b527-e72f08081f5drec58e62v0epfogin4i1o6mu55.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\wwwroot\\uploads\\authors\\35492a0b-3fd6-43a2-bc6a-531e7263d7c4agatha-christie.jpg",
+      "PackagePath": "staticwebassets\\uploads\\authors\\35492a0b-3fd6-43a2-bc6a-531e7263d7c4agatha-christie.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\wwwroot\\uploads\\authors\\71167f48-1099-4e7d-abb5-9d67281ad465rec58e62v0epfogin4i1o6mu55.jpg",
+      "PackagePath": "staticwebassets\\uploads\\authors\\71167f48-1099-4e7d-abb5-9d67281ad465rec58e62v0epfogin4i1o6mu55.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\wwwroot\\uploads\\authors\\7d9c96e6-95bb-4057-b15c-37b7eb0abe49rec58e62v0epfogin4i1o6mu55.jpg",
+      "PackagePath": "staticwebassets\\uploads\\authors\\7d9c96e6-95bb-4057-b15c-37b7eb0abe49rec58e62v0epfogin4i1o6mu55.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\wwwroot\\uploads\\authors\\a08e3417-9f7d-40b6-8bc2-96e7747824d9rec58e62v0epfogin4i1o6mu55.jpg",
+      "PackagePath": "staticwebassets\\uploads\\authors\\a08e3417-9f7d-40b6-8bc2-96e7747824d9rec58e62v0epfogin4i1o6mu55.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\wwwroot\\uploads\\authors\\c16de5e5-0e98-4e67-9911-fac984e3c9d0images.jpeg",
+      "PackagePath": "staticwebassets\\uploads\\authors\\c16de5e5-0e98-4e67-9911-fac984e3c9d0images.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\wwwroot\\uploads\\authors\\c1caa724-5772-4a13-9ad0-930ee7408081rec58e62v0epfogin4i1o6mu55.jpg",
+      "PackagePath": "staticwebassets\\uploads\\authors\\c1caa724-5772-4a13-9ad0-930ee7408081rec58e62v0epfogin4i1o6mu55.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\wwwroot\\uploads\\books\\030b41a8-c56a-47fe-b8a6-686386cf5cf09780553213539.jpg",
+      "PackagePath": "staticwebassets\\uploads\\books\\030b41a8-c56a-47fe-b8a6-686386cf5cf09780553213539.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\wwwroot\\uploads\\books\\9eeb52fc-98ad-49c3-b0ed-ee6f3285812d15199.jpg",
+      "PackagePath": "staticwebassets\\uploads\\books\\9eeb52fc-98ad-49c3-b0ed-ee6f3285812d15199.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\wwwroot\\uploads\\books\\f11ccc23-e8b7-41bc-be7a-8e1d55edaafc81ANaVZk5LL._AC_UF1000,1000_QL80_.jpg",
+      "PackagePath": "staticwebassets\\uploads\\books\\f11ccc23-e8b7-41bc-be7a-8e1d55edaafc81ANaVZk5LL._AC_UF1000,1000_QL80_.jpg"
+    },
+    {
       "Id": "C:\\Users\\Elvin\\Desktop\\C#\\MVC\\Library Management System\\Library Management System\\wwwroot\\vendor\\bootstrap\\js\\bootstrap.bundle.js",
       "PackagePath": "staticwebassets\\vendor\\bootstrap\\js\\bootstrap.bundle.js"
     },

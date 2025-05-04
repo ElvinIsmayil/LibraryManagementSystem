@@ -1,6 +1,7 @@
 ﻿using Library_Management_System.DAL;
 using Library_Management_System.Helpers;
 using Library_Management_System.Models;
+using Library_Management_System.ViewModels.Book;
 using Library_Management_System.ViewModels.BookCategory;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -29,6 +30,39 @@ namespace Library_Management_System.Controllers
             }).ToList();
 
             return View(categoryVMs);
+        }
+
+        [HttpGet("bookcategoriess/search")]
+        public async Task<IActionResult> Index(string search)
+        {
+            ViewData["SearchTerm"] = search;
+
+            if (string.IsNullOrEmpty(search))
+            {
+                var bookCategories = await _context.BookCategories.ToListAsync();
+                var mappedBookCategories = bookCategories.Select(b => new BookCategoryVM()
+                {
+                   Id=b.Id,
+                   Name = b.Name,
+                }).ToList();
+                return View(mappedBookCategories);
+            }
+
+            var filteredBookCategories = await _context.BookCategories.Where(x => x.Name.Contains(search)).ToListAsync();
+
+            if (!filteredBookCategories.Any())
+            {
+                TempData[AlertHelper.Error] = "No book categories found matching the search term!";
+                return View();
+            }
+
+            var mappedFilteredBookCategories = filteredBookCategories.Select(x => new BookCategoryVM()
+            {
+               Id=x.Id,
+               Name = x.Name,
+            }).ToList();
+
+            return View(mappedFilteredBookCategories);
         }
 
         #endregion
@@ -196,7 +230,10 @@ namespace Library_Management_System.Controllers
         [HttpGet]
         public async Task<IActionResult> Detail(int id)
         {
-            var bookCategory = await _context.BookCategories.AsNoTracking().FirstOrDefaultAsync(bc=>bc.Id == id);
+            var bookCategory = await _context.BookCategories
+                .Include(bc=>bc.Books)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(bc=>bc.Id == id);
 
             if (bookCategory is null)
             {
@@ -205,18 +242,22 @@ namespace Library_Management_System.Controllers
             }
 
             var bookCategoryDetailVM = new BookCategoryDetailVM()
+
             {
                 Id = id,
                 Name = bookCategory.Name,
+                BookVMs = bookCategory.Books.Select(x => new BookVM()
+                {
+                    Id = x.Id,
+                    Title = x.Title
+                }).ToList()
+
             };
 
             return View(bookCategoryDetailVM);
         }
 
         #endregion
-
-        
-
 
     }
 }
